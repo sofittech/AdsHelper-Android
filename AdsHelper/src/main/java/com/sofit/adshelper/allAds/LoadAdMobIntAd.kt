@@ -5,7 +5,7 @@ import android.os.Looper
 import android.util.Log
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
-import com.sofit.adshelper.AdsHelper
+import com.sofit.adshelper.mainclass.AdsHelper
 
 object LoadAdMobIntAd {
 

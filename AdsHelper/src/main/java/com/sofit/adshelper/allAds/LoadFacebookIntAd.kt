@@ -6,7 +6,7 @@ import android.util.Log
 import com.facebook.ads.Ad
 import com.facebook.ads.AdError
 import com.facebook.ads.InterstitialAdListener
-import com.sofit.adshelper.AdsHelper
+import com.sofit.adshelper.mainclass.AdsHelper
 
 object LoadFacebookIntAd {
 

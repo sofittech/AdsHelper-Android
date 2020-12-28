@@ -1,4 +1,4 @@
-package com.sofit.adshelper
+package com.sofit.adshelper.mainclass
 
 import android.app.Activity
 import android.content.Context

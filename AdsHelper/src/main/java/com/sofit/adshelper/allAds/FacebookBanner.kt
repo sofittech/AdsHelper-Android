@@ -1,11 +1,10 @@
 package com.sofit.adshelper.allAds
 
 import android.app.Activity
-import android.content.Context
 import android.util.Log
 import android.widget.RelativeLayout
 import com.facebook.ads.*
-import com.sofit.adshelper.AdsHelper
+import com.sofit.adshelper.mainclass.AdsHelper
 
 object FacebookBanner {
     fun showFacebookBanner(activity: Activity, bannerContainer: RelativeLayout) {

@@ -1,7 +1,7 @@
 package com.sofit
 
 import android.app.Application
-import com.sofit.adshelper.AdsHelper
+import com.sofit.adshelper.mainclass.AdsHelper
 import com.sofit.adshelperlib.R
 
 class BaseApp : Application() {
