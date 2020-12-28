@@ -8,11 +8,10 @@ import com.facebook.ads.*
 import com.sofit.adshelper.AdsHelper
 
 object FacebookBanner {
-    fun showFacebookBanner(activity: Activity, bannerContainer: RelativeLayout, context: Context) {
-        lateinit var facebookAdView: AdView
-        facebookAdView = AdView(activity, AdsHelper.FACEBOOK_BANNER_ID, AdSize.BANNER_HEIGHT_90)
+    fun showFacebookBanner(activity: Activity, bannerContainer: RelativeLayout) {
+        val facebookAdView = AdView(activity, AdsHelper.fb_banner_id, AdSize.BANNER_HEIGHT_50)
         bannerContainer.addView(facebookAdView)
-        facebookAdView.setAdListener(object : AdListener {
+        val adListener = object : AdListener {
             override fun onError(ad: Ad, adError: AdError) {
                 Log.e(
                     "facebookBannerAd",
@@ -31,8 +30,11 @@ object FacebookBanner {
             override fun onLoggingImpression(ad: Ad) {
                 Log.e("facebookBannerAd", "onLoggingImpression")
             }
-        })
-        facebookAdView.loadAd()
+        }
+        val loadAdConfig = facebookAdView.buildLoadAdConfig()
+            .withAdListener(adListener)
+            .build()
+        facebookAdView.loadAd(loadAdConfig)
     }
 
 }

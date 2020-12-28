@@ -9,7 +9,7 @@ import com.sofit.adshelper.AdsHelper
 
 object LoadAdMobIntAd {
 
-    fun loadAdmobAd(autoLoadNextTime: Boolean) {
+    fun loadAdMobAd(autoLoadNextTime: Boolean) {
         AdsHelper.mInterstitialAd.loadAd(AdRequest.Builder().build())
         AdsHelper.mInterstitialAd.adListener = object : AdListener() {
             override fun onAdLoaded() {

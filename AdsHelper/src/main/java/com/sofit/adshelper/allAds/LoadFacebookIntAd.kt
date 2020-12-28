@@ -9,8 +9,8 @@ import com.facebook.ads.InterstitialAdListener
 import com.sofit.adshelper.AdsHelper
 
 object LoadFacebookIntAd {
-    lateinit var facebookInterstitialAd: com.facebook.ads.InterstitialAd
 
+    @Suppress("DEPRECATION")
     fun loadFbAd(autoLoadNextTime: Boolean) {
         AdsHelper.facebookInterstitialAd.setAdListener(object : InterstitialAdListener {
             override fun onInterstitialDisplayed(ad: Ad) {
