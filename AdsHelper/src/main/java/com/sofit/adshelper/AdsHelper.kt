@@ -27,8 +27,7 @@ object AdsHelper {
     ) {
         fun with(context: Context) = apply { this.context = context
             AudienceNetworkAds.initialize(context)
-            AudienceNetworkAds.isInAdsProcess(context)
-        }
+         }
         fun admobAppId(adMobApp: String) = apply {}
         fun admobInterstitialId(admobInterstitial: String) = apply {
             mInterstitialAd = InterstitialAd(context)
