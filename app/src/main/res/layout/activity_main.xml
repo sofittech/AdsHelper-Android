@@ -6,10 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <com.sofit.adshelper.adView.MyAdView
+        android:id="@+id/bannerFacebook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         app:setBottomBorder="true"
+         app:setTopBorder="false" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-          >
+        android:layout_above="@+id/bannerView"
+         >
+
 
         <Button
             android:id="@+id/button"
@@ -27,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="showAdMobAd"
-            android:text="@string/show_admob_ad"
+            android:text="@string/show_AdMob_ad"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -40,8 +49,9 @@
     <com.sofit.adshelper.adView.MyAdView
         android:id="@+id/bannerView"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:setBottomBorder="true"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:setTopBorder="true"/>
+         app:setBottomBorder="false"
+        app:setTopBorder="true" />
 </RelativeLayout>

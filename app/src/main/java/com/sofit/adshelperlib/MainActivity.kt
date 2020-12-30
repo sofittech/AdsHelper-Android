@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         AdsHelper.showAdMobBanner(this@MainActivity, findViewById(R.id.bannerView))
-        //AdsHelper.showFacebookBanner(this@MainActivity, findViewById(R.id.bannerFacebook))
+        AdsHelper.showFacebookBanner(this@MainActivity, findViewById(R.id.bannerFacebook))
         AdsHelper.loadFacebookInterstitial(false)
         AdsHelper.loadAdMobInterstitial(false)
     }

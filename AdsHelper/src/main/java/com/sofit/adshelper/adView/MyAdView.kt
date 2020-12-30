@@ -26,11 +26,15 @@ class MyAdView(context: Context, attrs: AttributeSet?) :
             setBottomBorder = a.getBoolean(R.styleable.MyAdView_setBottomBorder, false)
 
             if (setTopBorders) {
-                topView.visibility = VISIBLE
+                topView.visibility = View.VISIBLE
+            }else {
+                topView.visibility= View.GONE
             }
             if (setBottomBorder) {
 
-                bottomView.visibility = VISIBLE
+                bottomView.visibility = View.VISIBLE
+            }else{
+                bottomView.visibility=View.GONE
             }
         } finally {
             a.recycle()

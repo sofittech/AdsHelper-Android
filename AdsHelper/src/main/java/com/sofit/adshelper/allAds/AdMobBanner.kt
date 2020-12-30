@@ -5,59 +5,52 @@ import android.content.Context
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.Display
+import android.view.View
 import android.widget.RelativeLayout
-import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdSize
-import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.*
 import com.sofit.adshelper.mainclass.AdsHelper
 
-object AdmobBanner {
+object AdMobBanner {
 
-    fun showAdmobBanner(activity: Activity, adMobContainer: RelativeLayout) {
+    fun showAdMobBanner(activity: Activity, adMobContainer: RelativeLayout) {
         val mAdView = AdView(activity)
-        mAdView.adSize = getAdSize(activity,activity)
-        mAdView.adUnitId = AdsHelper.adMob_banner_id
+        mAdView.adSize = getAdSize(activity, activity)
+        mAdView.adUnitId = AdsHelper.AdMob_banner_id
         adMobContainer.addView(mAdView)
         val adRequest = AdRequest.Builder().build()
         mAdView.adListener = object : AdListener() {
             override fun onAdLoaded() {
-                Log.e("adMobBanner: ", "adMob Banner loaded")
-                // Code to be executed when an ad finishes loading.
-                val layoutDescription = RelativeLayout.LayoutParams(
-                    RelativeLayout.LayoutParams.WRAP_CONTENT,
-                    RelativeLayout.LayoutParams.WRAP_CONTENT
-                )
-                adMobContainer.layoutParams = layoutDescription
+                adMobContainer.visibility = View.VISIBLE
+                Log.e("AdMobBanner: ", "AdMob Banner loaded")
             }
 
             override fun onAdFailedToLoad(errorCode: Int) {
-                Log.e("adMobBanner: ", "adMob Banner Failed")
+                Log.e("AdMobBanner: ", "AdMob Banner Failed")
 
                 // Code to be executed when an ad request fails.
             }
 
             override fun onAdOpened() {
-                Log.e("adMobBanner: ", "adMob Banner Opened")
+                Log.e("AdMobBanner: ", "AdMob Banner Opened")
 
                 // Code to be executed when an ad opens an overlay that
                 // covers the screen.
             }
 
             override fun onAdClicked() {
-                Log.e("adMobBanner: ", "adMob Banner Clicked")
+                Log.e("AdMobBanner: ", "AdMob Banner Clicked")
 
                 // Code to be executed when the user clicks on an ad.
             }
 
             override fun onAdLeftApplication() {
-                Log.e("adMobBanner: ", "adMob Banner Left Application")
+                Log.e("AdMobBanner: ", "AdMob Banner Left Application")
 
                 // Code to be executed when the user has left the app.
             }
 
             override fun onAdClosed() {
-                Log.e("adMobBanner: ", "adMob Banner Closed")
+                Log.e("AdMobBanner: ", "AdMob Banner Closed")
 
                 // Code to be executed when the user is about to return
                 // to the app after tapping on an ad.

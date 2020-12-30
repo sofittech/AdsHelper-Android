@@ -2,6 +2,7 @@ package com.sofit.adshelper.allAds
 
 import android.app.Activity
 import android.util.Log
+import android.view.View
 import android.widget.RelativeLayout
 import com.facebook.ads.*
 import com.sofit.adshelper.mainclass.AdsHelper
@@ -19,6 +20,7 @@ object FacebookBanner {
             }
 
             override fun onAdLoaded(ad: Ad) {
+                bannerContainer.visibility=View.VISIBLE
                 Log.e("facebookBannerAd", "onAdLoaded" + " in " + activity.localClassName)
             }
 

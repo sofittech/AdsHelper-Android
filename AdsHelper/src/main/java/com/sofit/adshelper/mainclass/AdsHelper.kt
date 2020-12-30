@@ -12,27 +12,27 @@ object AdsHelper {
     lateinit var mInterstitialAd: InterstitialAd
     lateinit var facebookInterstitialAd: com.facebook.ads.InterstitialAd
     lateinit var fb_banner_id: String
-    lateinit var adMob_banner_id: String
+    lateinit var AdMob_banner_id: String
 
     data class Builder(
         var context: Context,
-        var adMob_native_id: String? = null,
+        var AdMob_native_id: String? = null,
         var fb_native_id: String? = null,
-        var adMob_app_id:String?=null
+        var AdMob_app_id:String?=null
     ) {
         fun with(context: Context) = apply {
             this.context = context
             AudienceNetworkAds.initialize(context)
         }
 
-        fun adMobAppId(adMobApp: String) = apply {this.adMob_app_id=adMobApp}
-        fun adMobInterstitialId(adMobInterstitial: String) = apply {
+        fun adMobAppId(AdMobApp: String) = apply {this.AdMob_app_id=AdMobApp}
+        fun adMobInterstitialId(AdMobInterstitial: String) = apply {
             mInterstitialAd = InterstitialAd(context)
-            mInterstitialAd.adUnitId = adMobInterstitial
+            mInterstitialAd.adUnitId = AdMobInterstitial
         }
 
-        fun adMobBannerId(adMobBanner: String) = apply { adMob_banner_id = adMobBanner }
-        fun adMobNativeId(adMobNative: String) = apply { this.adMob_native_id = adMobNative }
+        fun adMobBannerId(AdMobBanner: String) = apply { AdMob_banner_id = AdMobBanner }
+        fun adMobNativeId(AdMobNative: String) = apply { this.AdMob_native_id = AdMobNative }
         fun fbInterstitialID(fbInterstitial: String) = apply {
             facebookInterstitialAd = com.facebook.ads.InterstitialAd(context, fbInterstitial)
         }
@@ -64,7 +64,7 @@ object AdsHelper {
         if (!mInterstitialAd.isLoaded) {
             LoadAdMobIntAd.loadAdMobAd(autoLoadNextTime)
         } else {
-            Log.e("adMobInterstitial", "AdMob Already loaded")
+            Log.e("AdMobInterstitial", "AdMob Already loaded")
         }
     }
 
@@ -80,7 +80,7 @@ object AdsHelper {
 
     fun showAdMobBanner(activity: Activity, rLayout: RelativeLayout) {
         if (UtilClass.verifyInstallerId(activity)) {
-            AdmobBanner.showAdmobBanner(activity, rLayout)
+            AdMobBanner.showAdMobBanner(activity, rLayout)
         }
     }
 

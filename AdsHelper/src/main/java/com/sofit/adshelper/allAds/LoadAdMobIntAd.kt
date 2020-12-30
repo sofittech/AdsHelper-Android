@@ -14,36 +14,36 @@ object LoadAdMobIntAd {
         AdsHelper.mInterstitialAd.adListener = object : AdListener() {
             override fun onAdLoaded() {
                 Log.e(
-                    "AdmobInterstitial",
-                    "Admob Interstitial ad is loaded and ready to be displayed!"
+                    "AdMobInterstitial",
+                    "AdMob Interstitial ad is loaded and ready to be displayed!"
                 )
             }
 
             override fun onAdFailedToLoad(errorCode: Int) {
                 // Code to be executed when an ad request fails.
                 Log.e(
-                    "AdmobInterstitial",
-                    "onError-Banner failed, error code: " + errorCode
+                    "AdMobInterstitial",
+                    "onError-Banner failed, error code: $errorCode"
                 )
             }
 
             override fun onAdOpened() {
                 // Code to be executed when the ad is displayed.
-                Log.e("AdmobInterstitial", "opened")
+                Log.e("AdMobInterstitial", "opened")
             }
 
             override fun onAdClicked() {
                 // Code to be executed when the user clicks on an ad.
-                Log.e("AdmobInterstitial", "clicked")
+                Log.e("AdMobInterstitial", "clicked")
             }
 
             override fun onAdLeftApplication() {
                 // Code to be executed when the user has left the app.
-                Log.e("AdmobInterstitial", "onAdLeftApplication")
+                Log.e("AdMobInterstitial", "onAdLeftApplication")
             }
 
             override fun onAdClosed() {
-                Log.e("AdmobInterstitial", "closed")
+                Log.e("AdMobInterstitial", "closed")
 
                 if (autoLoadNextTime) {
                     Handler(Looper.getMainLooper()).postDelayed(

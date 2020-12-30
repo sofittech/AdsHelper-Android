@@ -43,7 +43,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     // facebook ads library
     implementation 'com.facebook.android:audience-network-sdk:5.11.0'
-    // admob ads library
+    // AdMob ads library
     implementation 'com.google.android.gms:play-services-ads:19.6.0'
     //
 
