@@ -17,6 +17,7 @@ object AdsHelper {
     lateinit var fb_banner_id: String
     lateinit var AdMob_banner_id: String
     lateinit var appContext: Context
+    var isUserVerified: Boolean = false
 
     data class Builder(
         var context: Context,
@@ -28,6 +29,10 @@ object AdsHelper {
             this.context = context
             appContext = context
             AudienceNetworkAds.initialize(context)
+        }
+
+        fun isVerified(isVerified: Boolean) = apply {
+            isUserVerified = isVerified
         }
 
         fun adMobAppId(AdMobApp: String) = apply { this.AdMob_app_id = AdMobApp }
@@ -50,21 +55,22 @@ object AdsHelper {
 
     fun loadFacebookInterstitial(autoLoadNextTime: Boolean) {
         if (!facebookInterstitialAd.isAdLoaded || facebookInterstitialAd.isAdInvalidated)
-            LoadFacebookIntAd.loadFbAd(autoLoadNextTime)
-        else {
-            Log.e("facebookInterstitial", "Ad already loaded")
-        }
+            if (isUserVerified) {
+                LoadFacebookIntAd.loadFbAd(autoLoadNextTime)
+            } else {
+                Log.e("facebookInterstitial", "Ad already loaded")
+            }
     }
 
     fun showFacebookInterstitial(context: Context) {
-        if (facebookInterstitialAd.isAdLoaded) {
+        if (facebookInterstitialAd.isAdLoaded && isUserVerified) {
             facebookInterstitialAd.show()
             Log.e("facebookInter", "showingFacebookInterstitialAd")
         }
     }
 
     fun loadAdMobInterstitial(autoLoadNextTime: Boolean) {
-        if (!mInterstitialAd.isLoaded) {
+        if (!mInterstitialAd.isLoaded && isUserVerified) {
             LoadAdMobIntAd.loadAdMobAd(autoLoadNextTime)
         } else {
             Log.e("AdMobInterstitial", "AdMob Already loaded")
@@ -73,18 +79,22 @@ object AdsHelper {
 
     fun showAdMobInterstitial(context: Context) {
         Log.e("showInterAd", "running")
-        if (mInterstitialAd.isLoaded) {
+        if (mInterstitialAd.isLoaded && isUserVerified) {
             Log.e("showing", "ad")
             mInterstitialAd.show()
         }
     }
 
     fun showAdMobBanner(activity: Activity, rLayout: RelativeLayout) {
-        AdMobBanner.showAdMobBanner(activity, rLayout)
+        if (isUserVerified){
+            AdMobBanner.showAdMobBanner(activity, rLayout)
+        }
     }
 
     fun showFacebookBanner(activity: Activity, rLayout: RelativeLayout) {
-        FacebookBanner.showFacebookBanner(activity, rLayout)
+        if (isUserVerified){
+            FacebookBanner.showFacebookBanner(activity, rLayout)
+        }
     }
 
 }
