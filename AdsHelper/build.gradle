@@ -12,10 +12,11 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        resValue "string", "build_config_package", "${applicationId}"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
+
 
     buildTypes {
         release {

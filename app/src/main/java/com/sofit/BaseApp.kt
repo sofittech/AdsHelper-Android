@@ -8,7 +8,7 @@ class BaseApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        AdsHelper.Builder(context = applicationContext)
+        AdsHelper.Builder(applicationContext)
             .with(applicationContext)
             .adMobAppId(applicationContext.getString(R.string.AdMob_app_id))
             .adMobBannerId(applicationContext.getString(R.string.AdMob_test_id_banner))
