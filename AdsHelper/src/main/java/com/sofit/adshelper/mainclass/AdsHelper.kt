@@ -37,6 +37,7 @@ object AdsHelper {
 
         fun adMobAppId(AdMobApp: String) = apply { this.AdMob_app_id = AdMobApp }
         fun adMobInterstitialId(AdMobInterstitial: String) = apply {
+            AudienceNetworkAds.initialize(context);
             mInterstitialAd = InterstitialAd(context)
             mInterstitialAd.adUnitId = AdMobInterstitial
         }
