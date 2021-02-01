@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Ads Helper Lib</string>
+    <string name="show_facebook_ad">Show Facebook Ad!</string>
+    <string name="show_AdMob_ad">Show AdMob Ad!</string>
+    <string name="facebook_banner">Facebook Banner</string>
+    <string name="AdMob_banner">AdMob Banner!</string>
+
+    <string name="AdMob_app_id">ca-app-pub-3922285759477168~4079459621</string>
+    <string name="AdMob_test_id_banner" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="AdMob_test_id_interstitial" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="AdMob_test_id_native" translatable="false">ca-app-pub-3922285759477168/3552846015</string>
+
+    <string name="fb_test_id_banner" translatable="false">IMG_16_9_APP_INSTALL#1348796538799261_1348799512132297</string>
+    <string name="fb_test_id_interstitial" translatable="false">IMG_16_9_APP_INSTALL#1348796538799261_1348801922132056</string>
+
 </resources>

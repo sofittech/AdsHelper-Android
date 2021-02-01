@@ -1,22 +1,21 @@
 package com.sofit
 
 import android.app.Application
-import com.sofit.adshelper.AdsHelper
+import com.sofit.adshelper.mainclass.AdsHelper
+import com.sofit.adshelperlib.R
 
 class BaseApp : Application() {
     override fun onCreate() {
         super.onCreate()
-        AdsHelper.Builder(context = applicationContext)
-            .with(applicationContext)
-//            .admobAppId("id")
-//            .admobBannerId("id")
-//            .admobInterstitialId("id")
-//            .admobNativeId("id")
-//            .fbBannerId("id")
-            .fbInterstitialID("IMG_16_9_APP_INSTALL#338675584002340_338677477335484")
-//            .fbNativeId("id")
-//            .initAdmob()
-            .build()
 
+        AdsHelper.Builder(applicationContext)
+            .with(applicationContext)
+            .adMobAppId(applicationContext.getString(R.string.AdMob_app_id))
+            .adMobBannerId(applicationContext.getString(R.string.AdMob_test_id_banner))
+            .adMobInterstitialId(applicationContext.getString(R.string.AdMob_test_id_interstitial))
+            .adMobNativeId(applicationContext.getString(R.string.AdMob_test_id_native))
+            .fbBannerId(applicationContext.getString(R.string.fb_test_id_banner))
+            .fbInterstitialID(applicationContext.getString(R.string.fb_test_id_interstitial))
+            .build()
     }
 }

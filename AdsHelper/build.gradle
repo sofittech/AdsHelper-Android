@@ -12,10 +12,11 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        resValue "string", "build_config_package", "${applicationId}"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
+
 
     buildTypes {
         release {
@@ -43,7 +44,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     // facebook ads library
     implementation 'com.facebook.android:audience-network-sdk:5.11.0'
-    // admob ads library
+    // AdMob ads library
     implementation 'com.google.android.gms:play-services-ads:19.6.0'
     //
 
