@@ -54,6 +54,7 @@ object AdsHelper {
 
     }
 
+    @JvmStatic
     fun loadFacebookInterstitial(autoLoadNextTime: Boolean) {
         if (!facebookInterstitialAd.isAdLoaded || facebookInterstitialAd.isAdInvalidated)
             if (isUserVerified) {
@@ -63,6 +64,7 @@ object AdsHelper {
             }
     }
 
+    @JvmStatic
     fun showFacebookInterstitial(context: Context) {
         if (facebookInterstitialAd.isAdLoaded && isUserVerified) {
             facebookInterstitialAd.show()
@@ -70,6 +72,7 @@ object AdsHelper {
         }
     }
 
+    @JvmStatic
     fun loadAdMobInterstitial(autoLoadNextTime: Boolean) {
         if (!mInterstitialAd.isLoaded && isUserVerified) {
             LoadAdMobIntAd.loadAdMobAd(autoLoadNextTime)
@@ -78,6 +81,7 @@ object AdsHelper {
         }
     }
 
+    @JvmStatic
     fun showAdMobInterstitial(context: Context) {
         Log.e("showInterAd", "running")
         if (mInterstitialAd.isLoaded && isUserVerified) {
@@ -86,14 +90,16 @@ object AdsHelper {
         }
     }
 
+    @JvmStatic
     fun showAdMobBanner(activity: Activity, rLayout: RelativeLayout) {
-        if (isUserVerified){
+        if (isUserVerified) {
             AdMobBanner.showAdMobBanner(activity, rLayout)
         }
     }
 
+    @JvmStatic
     fun showFacebookBanner(activity: Activity, rLayout: RelativeLayout) {
-        if (isUserVerified){
+        if (isUserVerified) {
             FacebookBanner.showFacebookBanner(activity, rLayout)
         }
     }
