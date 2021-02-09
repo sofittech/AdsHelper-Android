@@ -5,9 +5,9 @@ import android.os.Looper
 import android.util.Log
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
-import com.sofit.adshelper.mainclass.AdsHelper
+import com.sofit.adshelper.core.AdsHelper
 
-object LoadAdMobIntAd {
+object AdMobInterstitial {
 
     fun loadAdMobAd(autoLoadNextTime: Boolean) {
         AdsHelper.mInterstitialAd.loadAd(AdRequest.Builder().build())

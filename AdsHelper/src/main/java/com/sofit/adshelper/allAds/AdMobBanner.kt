@@ -8,7 +8,7 @@ import android.view.Display
 import android.view.View
 import android.widget.RelativeLayout
 import com.google.android.gms.ads.*
-import com.sofit.adshelper.mainclass.AdsHelper
+import com.sofit.adshelper.core.AdsHelper
 
 object AdMobBanner {
 

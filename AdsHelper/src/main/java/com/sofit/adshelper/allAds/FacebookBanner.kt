@@ -5,7 +5,7 @@ import android.util.Log
 import android.view.View
 import android.widget.RelativeLayout
 import com.facebook.ads.*
-import com.sofit.adshelper.mainclass.AdsHelper
+import com.sofit.adshelper.core.AdsHelper
 
 object FacebookBanner {
     fun showFacebookBanner(activity: Activity, bannerContainer: RelativeLayout) {

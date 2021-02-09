@@ -1,4 +1,4 @@
-package com.sofit.adshelper.mainclass
+package com.sofit.adshelper.core
 
 import android.app.Activity
 import android.content.Context
@@ -8,8 +8,8 @@ import com.facebook.ads.AudienceNetworkAds
 import com.google.android.gms.ads.InterstitialAd
 import com.sofit.adshelper.allAds.AdMobBanner
 import com.sofit.adshelper.allAds.FacebookBanner
-import com.sofit.adshelper.allAds.LoadAdMobIntAd
-import com.sofit.adshelper.allAds.LoadFacebookIntAd
+import com.sofit.adshelper.allAds.AdMobInterstitial
+import com.sofit.adshelper.allAds.FacebookInterstitial
 
 object AdsHelper {
     lateinit var mInterstitialAd: InterstitialAd
@@ -36,6 +36,7 @@ object AdsHelper {
         }
 
         fun adMobAppId(AdMobApp: String) = apply { this.AdMob_app_id = AdMobApp }
+
         fun adMobInterstitialId(AdMobInterstitial: String) = apply {
             AudienceNetworkAds.initialize(context);
             mInterstitialAd = InterstitialAd(context)
@@ -43,22 +44,25 @@ object AdsHelper {
         }
 
         fun adMobBannerId(AdMobBanner: String) = apply { AdMob_banner_id = AdMobBanner }
+
         fun adMobNativeId(AdMobNative: String) = apply { this.AdMob_native_id = AdMobNative }
+
         fun fbInterstitialID(fbInterstitial: String) = apply {
             facebookInterstitialAd = com.facebook.ads.InterstitialAd(context, fbInterstitial)
         }
 
         fun fbBannerId(fbBanner: String) = apply { fb_banner_id = fbBanner }
-        fun fbNativeId(fbNative: String) = apply { this.fb_native_id = fbNative }
-        fun build() = AdsHelper
 
+        fun fbNativeId(fbNative: String) = apply { this.fb_native_id = fbNative }
+
+        fun build() = AdsHelper
     }
 
     @JvmStatic
     fun loadFacebookInterstitial(autoLoadNextTime: Boolean) {
         if (!facebookInterstitialAd.isAdLoaded || facebookInterstitialAd.isAdInvalidated)
             if (isUserVerified) {
-                LoadFacebookIntAd.loadFbAd(autoLoadNextTime)
+                FacebookInterstitial.loadFbAd(autoLoadNextTime)
             } else {
                 Log.e("facebookInterstitial", "Ad already loaded")
             }
@@ -75,7 +79,7 @@ object AdsHelper {
     @JvmStatic
     fun loadAdMobInterstitial(autoLoadNextTime: Boolean) {
         if (!mInterstitialAd.isLoaded && isUserVerified) {
-            LoadAdMobIntAd.loadAdMobAd(autoLoadNextTime)
+            AdMobInterstitial.loadAdMobAd(autoLoadNextTime)
         } else {
             Log.e("AdMobInterstitial", "AdMob Already loaded")
         }

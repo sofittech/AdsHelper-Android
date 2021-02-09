@@ -3,7 +3,7 @@ package com.sofit.adshelperlib
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.sofit.adshelper.mainclass.AdsHelper
+import com.sofit.adshelper.core.AdsHelper
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
