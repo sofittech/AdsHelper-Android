@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.sofit.adshelper.adView.MyAdView
+    <com.sofit.adshelper.customViews.BannerAdView
         android:id="@+id/bannerFacebook"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <com.sofit.adshelper.adView.MyAdView
+    <com.sofit.adshelper.customViews.BannerAdView
         android:id="@+id/bannerView"
         android:layout_width="match_parent"
         android:visibility="gone"

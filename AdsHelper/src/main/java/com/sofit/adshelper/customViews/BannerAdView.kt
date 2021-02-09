@@ -1,4 +1,4 @@
-package com.sofit.adshelper.adView
+package com.sofit.adshelper.customViews
 
 import android.content.Context
 import android.content.res.TypedArray
@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.RelativeLayout
 import com.sofit.adshelper.R
 
-class MyAdView(context: Context, attrs: AttributeSet?) :
+class BannerAdView(context: Context, attrs: AttributeSet?) :
     RelativeLayout(context, attrs) {
     var setTopBorders: Boolean = false
     var setBottomBorder: Boolean = false

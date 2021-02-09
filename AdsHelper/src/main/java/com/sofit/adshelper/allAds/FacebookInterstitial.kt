@@ -6,11 +6,9 @@ import android.util.Log
 import com.facebook.ads.Ad
 import com.facebook.ads.AdError
 import com.facebook.ads.InterstitialAdListener
-import com.sofit.adshelper.mainclass.AdsHelper
+import com.sofit.adshelper.core.AdsHelper
 
-object LoadFacebookIntAd {
-
-    @Suppress("DEPRECATION")
+object FacebookInterstitial {
     fun loadFbAd(autoLoadNextTime: Boolean) {
         AdsHelper.facebookInterstitialAd.setAdListener(object : InterstitialAdListener {
             override fun onInterstitialDisplayed(ad: Ad) {
@@ -53,5 +51,4 @@ object LoadFacebookIntAd {
         })
         AdsHelper.facebookInterstitialAd.loadAd()
     }
-
 }
