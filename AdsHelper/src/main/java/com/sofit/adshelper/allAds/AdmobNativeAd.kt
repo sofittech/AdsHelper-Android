@@ -16,7 +16,7 @@ object AdMobNativeView {
         //Initializing the AdLoader   objects
         val adLoader = AdLoader.Builder(context, AdsHelper.ADMOB_NATIVE_ID)
             .forUnifiedNativeAd { ad: UnifiedNativeAd ->
-                Log.e("checkAds", "show your ad")
+                Log.e("AdMob Native", "Ad is loaded, showing ad...")
 
                 frameLayout.visibility = View.VISIBLE
                 frameLayout.setNativeAd(ad)
