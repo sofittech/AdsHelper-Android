@@ -5,17 +5,17 @@ import android.content.Context
 import android.util.Log
 import android.widget.RelativeLayout
 import com.facebook.ads.AudienceNetworkAds
+import com.facebook.ads.NativeAdView
 import com.google.android.gms.ads.InterstitialAd
-import com.sofit.adshelper.allAds.AdMobBanner
-import com.sofit.adshelper.allAds.FacebookBanner
-import com.sofit.adshelper.allAds.LoadAdMobIntAd
-import com.sofit.adshelper.allAds.LoadFacebookIntAd
+import com.sofit.adshelper.adView.NativeAdCustomView
+import com.sofit.adshelper.allAds.*
 
 object AdsHelper {
     lateinit var mInterstitialAd: InterstitialAd
     lateinit var facebookInterstitialAd: com.facebook.ads.InterstitialAd
     lateinit var fb_banner_id: String
     lateinit var AdMob_banner_id: String
+    lateinit var ADMOB_NATIVE_ID: String
     lateinit var appContext: Context
     var isUserVerified: Boolean = false
 
@@ -43,7 +43,8 @@ object AdsHelper {
         }
 
         fun adMobBannerId(AdMobBanner: String) = apply { AdMob_banner_id = AdMobBanner }
-        fun adMobNativeId(AdMobNative: String) = apply { this.AdMob_native_id = AdMobNative }
+        fun adMobNativeId(AdMobNative: String) = apply { this.AdMob_native_id = AdMobNative
+        ADMOB_NATIVE_ID=AdMobNative}
         fun fbInterstitialID(fbInterstitial: String) = apply {
             facebookInterstitialAd = com.facebook.ads.InterstitialAd(context, fbInterstitial)
         }
@@ -102,6 +103,10 @@ object AdsHelper {
         if (isUserVerified) {
             FacebookBanner.showFacebookBanner(activity, rLayout)
         }
+    }
+    @JvmStatic
+    fun showAdMobNativeAd(context: Context, frameLayout: NativeAdCustomView){
+        AdMobNativeView.showNativeAd(context,frameLayout)
     }
 
 }
