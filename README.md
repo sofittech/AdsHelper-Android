@@ -48,24 +48,24 @@
 
 
 
-## 6.	 Use view for banner Ads
-<com.sofit.adshelper.customViews.BannerAdView
-    android:id="@+id/bannerAdContainer"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
-    android:visibility="invisible"
-    app:setTopBorder="true" />
+## 6.	 Use view for banner Ads:
+      <com.sofit.adshelper.customViews.BannerAdView
+         android:id="@+id/bannerAdContainer"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_alignParentBottom="true"
+         android:visibility="invisible"
+         app:setTopBorder="true" />
 
 ## 7.	Load banner ad(Facebook or AdMob) in on Create of existing activity like:
- AdsHelper.showFacebookBanner(MainActivity.this, findViewById(R.id.bannerAdContainer));
+        AdsHelper.showFacebookBanner(MainActivity.this, findViewById(R.id.bannerAdContainer));
 
 ## 8.	Load interstitial Ad like:
-AdsHelper.loadFacebookInterstitial(false);
-The parameter “false” in the above fun ask for auto load ad next time (in 15 seconds)
+       AdsHelper.loadFacebookInterstitial(false);
+      The parameter “false” in the above fun ask for auto load ad next time (in 15 seconds)
 
 ## 9.	Then show the interstitial Ad where you want like:
-AdsHelper.showFacebookInterstitial(MainActivity.this);
+      AdsHelper.showFacebookInterstitial(MainActivity.this);
 
 
 
