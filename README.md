@@ -1,7 +1,9 @@
-#                                Documentation of Ads helper library
+# Ads helper library
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 🇵🇰
 
 AdsHelper Android is a light weight library that enables developers to integrate Ads in a fast and secure fashion. 
-Currently this SDK supports Google AdMob and Facebook Ads network. Keeping coming back from amazing updates and new Ad networks.
+Currently this SDK supports *Google AdMob* and *Facebook Ads network*. Keeping coming back from amazing updates and new Ad networks.
 
 # Integration:
 Here we have an overview of how you can start integrating this SDK into your app:
@@ -19,7 +21,7 @@ Here we have an overview of how you can start integrating this SDK into your app
          android:value="@string/admob_app_id" />
          
 ## 4.  Add Admob test-Id in strings class: 
-    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="admob_app_id">ca-app-pub-XXXXXXXXXXXXXXXXXXXXXXXXXXX</string>
 
 ## 5.  A sample builder for your application class:
 
@@ -71,14 +73,14 @@ Here we have an overview of how you can start integrating this SDK into your app
 
 ## 9.	Loading facebook interstitial Ad:
     AdsHelper.loadFacebookInterstitial(false);
-    // The parameter “false” in the above fun ask for auto load ad next time (in 15 seconds)
+    // The parameter “false” in the above function ask for auto load ad next time (in 15 seconds)
     
 ## 9.	Loading Admob interstitial Ad:
     AdsHelper.loadAdMobInterstitial(false)
 
 ## 10. Then show the interstitial Ad where you want like:
-    AdsHelper.showFacebookInterstitial(MainActivity.this); //Facebook
-    AdsHelper.showAdMobInterstitial(MainActivity.this); //AdMob
+    AdsHelper.showFacebookInterstitial(MainActivity.this); // For Facebook
+    AdsHelper.showAdMobInterstitial(MainActivity.this); // For AdMob
 
 
 
