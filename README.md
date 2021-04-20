@@ -1,4 +1,8 @@
 #                                Documentation of Ads helper library
+
+AdsHelper Android is a light weight library that enables developers to integrate Ads in a fast and secure fashion. 
+Currently this SDK supports Google AdMob and Facebook Ads network. Keeping coming back from amazing updates and new Ad networks.
+
 ## 1.	Add the dependency in gradle (Module)   
     implementation 'com.github.sofittech:AdsHelper-Android:1.0.3'
 
