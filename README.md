@@ -33,8 +33,8 @@
                 .fbInterstitialID(applicationContext.getString(R.string.fb_id_interstitial))
                 .build()
     }
-}
-  And build ads as required (AdMob, Facebook) and (Banner, Interstitial and native ad) in builder class as shown.
+     }
+    And build ads as required (AdMob, Facebook) and (Banner, Interstitial and native ad) in builder class as shown.
 
 
 ## 6.	The utils class for Installer Id is :
