@@ -1,3 +1,4 @@
+include ':nativetemplates'
 include ':AdsHelper'
 include ':app'
 rootProject.name = "Ads Helper Lib"

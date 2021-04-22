@@ -10,12 +10,16 @@ import com.sofit.adshelper.allAds.AdMobBanner
 import com.sofit.adshelper.allAds.FacebookBanner
 import com.sofit.adshelper.allAds.AdMobInterstitial
 import com.sofit.adshelper.allAds.FacebookInterstitial
+import com.google.android.gms.ads.MobileAds
+import com.sofit.adshelper.adView.NativeAdCustomView
+import com.sofit.adshelper.allAds.*
 
 object AdsHelper {
     lateinit var mInterstitialAd: InterstitialAd
     lateinit var facebookInterstitialAd: com.facebook.ads.InterstitialAd
     lateinit var fb_banner_id: String
     lateinit var AdMob_banner_id: String
+    lateinit var ADMOB_NATIVE_ID: String
     lateinit var appContext: Context
     var isUserVerified: Boolean = false
 
@@ -29,6 +33,7 @@ object AdsHelper {
             this.context = context
             appContext = context
             AudienceNetworkAds.initialize(context)
+            MobileAds.initialize(context)
         }
 
         fun isVerified(isVerified: Boolean) = apply {
@@ -38,14 +43,16 @@ object AdsHelper {
         fun adMobAppId(AdMobApp: String) = apply { this.AdMob_app_id = AdMobApp }
 
         fun adMobInterstitialId(AdMobInterstitial: String) = apply {
-            AudienceNetworkAds.initialize(context);
             mInterstitialAd = InterstitialAd(context)
             mInterstitialAd.adUnitId = AdMobInterstitial
         }
 
         fun adMobBannerId(AdMobBanner: String) = apply { AdMob_banner_id = AdMobBanner }
 
-        fun adMobNativeId(AdMobNative: String) = apply { this.AdMob_native_id = AdMobNative }
+        fun adMobNativeId(AdMobNative: String) = apply {
+            this.AdMob_native_id = AdMobNative
+            ADMOB_NATIVE_ID = AdMobNative
+        }
 
         fun fbInterstitialID(fbInterstitial: String) = apply {
             facebookInterstitialAd = com.facebook.ads.InterstitialAd(context, fbInterstitial)
@@ -60,12 +67,15 @@ object AdsHelper {
 
     @JvmStatic
     fun loadFacebookInterstitial(autoLoadNextTime: Boolean) {
-        if (!facebookInterstitialAd.isAdLoaded || facebookInterstitialAd.isAdInvalidated)
+        if (!facebookInterstitialAd.isAdLoaded || facebookInterstitialAd.isAdInvalidated) {
             if (isUserVerified) {
                 FacebookInterstitial.loadFbAd(autoLoadNextTime)
             } else {
                 Log.e("facebookInterstitial", "Ad already loaded")
             }
+        } else {
+            Log.e("facebookInterstitial", "Ad already loaded")
+        }
     }
 
     @JvmStatic
@@ -106,6 +116,11 @@ object AdsHelper {
         if (isUserVerified) {
             FacebookBanner.showFacebookBanner(activity, rLayout)
         }
+    }
+
+    @JvmStatic
+    fun showAdMobNativeAd(context: Context, frameLayout: NativeAdCustomView) {
+        AdMobNativeView.showNativeAd(context, frameLayout)
     }
 
 }
