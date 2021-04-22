@@ -15,7 +15,7 @@ object AdMobBanner {
     fun showAdMobBanner(activity: Activity, adMobContainer: RelativeLayout) {
         val mAdView = AdView(activity)
         mAdView.adSize = getAdSize(activity, activity)
-        mAdView.adUnitId = AdsHelper.AdMob_banner_id
+        mAdView.adUnitId = AdsHelper.adMobBannerId
         adMobContainer.addView(mAdView)
         val adRequest = AdRequest.Builder().build()
         mAdView.adListener = object : AdListener() {

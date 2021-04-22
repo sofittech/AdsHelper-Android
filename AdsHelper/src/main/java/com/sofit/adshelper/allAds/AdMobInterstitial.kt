@@ -10,8 +10,8 @@ import com.sofit.adshelper.core.AdsHelper
 object AdMobInterstitial {
 
     fun loadAdMobAd(autoLoadNextTime: Boolean) {
-        AdsHelper.mInterstitialAd.loadAd(AdRequest.Builder().build())
-        AdsHelper.mInterstitialAd.adListener = object : AdListener() {
+        AdsHelper.adMobInterstitialAd.loadAd(AdRequest.Builder().build())
+        AdsHelper.adMobInterstitialAd.adListener = object : AdListener() {
             override fun onAdLoaded() {
                 Log.e(
                     "AdMobInterstitial",
@@ -47,7 +47,7 @@ object AdMobInterstitial {
 
                 if (autoLoadNextTime) {
                     Handler(Looper.getMainLooper()).postDelayed(
-                        { AdsHelper.mInterstitialAd.loadAd(AdRequest.Builder().build()) },
+                        { AdsHelper.adMobInterstitialAd.loadAd(AdRequest.Builder().build()) },
                         15000
                     )
                 }
