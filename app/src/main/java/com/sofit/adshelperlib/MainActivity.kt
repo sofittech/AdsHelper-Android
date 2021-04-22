@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.sofit.adshelper.core.AdsHelper
 import com.sofit.adshelper.adView.NativeAdCustomView
+import com.sofit.adshelper.enums.AdNetwork
 
 class MainActivity : AppCompatActivity() {
     lateinit var nativeAdCustomView: NativeAdCustomView
@@ -22,11 +23,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun showFBAd(view: View) {
-        AdsHelper.showFacebookInterstitial(this@MainActivity)
+        AdsHelper.showInterstitialAd(this@MainActivity, AdNetwork.Facebook)
     }
 
     fun showAdMobAd(view: View) {
-        AdsHelper.showAdMobInterstitial(this@MainActivity)
+        AdsHelper.showInterstitialAd(this@MainActivity, AdNetwork.AdMob)
     }
 
 }

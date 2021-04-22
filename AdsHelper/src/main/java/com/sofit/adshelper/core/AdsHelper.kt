@@ -13,19 +13,20 @@ import com.sofit.adshelper.allAds.FacebookInterstitial
 import com.google.android.gms.ads.MobileAds
 import com.sofit.adshelper.adView.NativeAdCustomView
 import com.sofit.adshelper.allAds.*
+import com.sofit.adshelper.enums.AdNetwork
 
 object AdsHelper {
-    lateinit var mInterstitialAd: InterstitialAd
+    lateinit var adMobInterstitialAd: InterstitialAd
     lateinit var facebookInterstitialAd: com.facebook.ads.InterstitialAd
-    lateinit var fb_banner_id: String
-    lateinit var AdMob_banner_id: String
-    lateinit var ADMOB_NATIVE_ID: String
+    lateinit var facebookBannerId: String
+    lateinit var adMobBannerId: String
+    lateinit var adMobNativeId: String
     lateinit var appContext: Context
     var isUserVerified: Boolean = false
 
     data class Builder(
         var context: Context,
-        var AdMob_native_id: String? = null,
+        var adMobNativeId: String? = null,
         var fb_native_id: String? = null,
         var AdMob_app_id: String? = null
     ) {
@@ -43,22 +44,22 @@ object AdsHelper {
         fun adMobAppId(AdMobApp: String) = apply { this.AdMob_app_id = AdMobApp }
 
         fun adMobInterstitialId(AdMobInterstitial: String) = apply {
-            mInterstitialAd = InterstitialAd(context)
-            mInterstitialAd.adUnitId = AdMobInterstitial
+            adMobInterstitialAd = InterstitialAd(context)
+            adMobInterstitialAd.adUnitId = AdMobInterstitial
         }
 
-        fun adMobBannerId(AdMobBanner: String) = apply { AdMob_banner_id = AdMobBanner }
+        fun adMobBannerId(AdMobBanner: String) = apply { adMobBannerId = AdMobBanner }
 
         fun adMobNativeId(AdMobNative: String) = apply {
-            this.AdMob_native_id = AdMobNative
-            ADMOB_NATIVE_ID = AdMobNative
+            this.adMobNativeId = AdMobNative
+            adMobNativeId = AdMobNative
         }
 
         fun fbInterstitialID(fbInterstitial: String) = apply {
             facebookInterstitialAd = com.facebook.ads.InterstitialAd(context, fbInterstitial)
         }
 
-        fun fbBannerId(fbBanner: String) = apply { fb_banner_id = fbBanner }
+        fun fbBannerId(fbBanner: String) = apply { facebookBannerId = fbBanner }
 
         fun fbNativeId(fbNative: String) = apply { this.fb_native_id = fbNative }
 
@@ -79,7 +80,7 @@ object AdsHelper {
     }
 
     @JvmStatic
-    fun showFacebookInterstitial(context: Context) {
+    private fun showFacebookInterstitial(context: Context) {
         if (facebookInterstitialAd.isAdLoaded && isUserVerified) {
             facebookInterstitialAd.show()
             Log.e("facebookInter", "showingFacebookInterstitialAd")
@@ -88,7 +89,7 @@ object AdsHelper {
 
     @JvmStatic
     fun loadAdMobInterstitial(autoLoadNextTime: Boolean) {
-        if (!mInterstitialAd.isLoaded && isUserVerified) {
+        if (!adMobInterstitialAd.isLoaded && isUserVerified) {
             AdMobInterstitial.loadAdMobAd(autoLoadNextTime)
         } else {
             Log.e("AdMobInterstitial", "AdMob Already loaded")
@@ -96,11 +97,25 @@ object AdsHelper {
     }
 
     @JvmStatic
-    fun showAdMobInterstitial(context: Context) {
+    private fun showAdMobInterstitial(context: Context) {
         Log.e("showInterAd", "running")
-        if (mInterstitialAd.isLoaded && isUserVerified) {
+        if (adMobInterstitialAd.isLoaded && isUserVerified) {
             Log.e("showing", "ad")
-            mInterstitialAd.show()
+            adMobInterstitialAd.show()
+        }
+    }
+
+    @JvmStatic
+    fun showInterstitialAd(context: Context, preferredNetwork: AdNetwork) {
+        when (preferredNetwork) {
+            AdNetwork.AdMob -> {
+                if (adMobInterstitialAd.isLoaded) showAdMobInterstitial(context)
+                else showFacebookInterstitial(context)
+            }
+            AdNetwork.Facebook -> {
+                if (facebookInterstitialAd.isAdLoaded) showFacebookInterstitial(context)
+                else showAdMobInterstitial(context)
+            }
         }
     }
 

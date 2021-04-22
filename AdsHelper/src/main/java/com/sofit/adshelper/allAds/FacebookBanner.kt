@@ -9,7 +9,7 @@ import com.sofit.adshelper.core.AdsHelper
 
 object FacebookBanner {
     fun showFacebookBanner(activity: Activity, bannerContainer: RelativeLayout) {
-        val facebookAdView = AdView(activity, AdsHelper.fb_banner_id, AdSize.BANNER_HEIGHT_50)
+        val facebookAdView = AdView(activity, AdsHelper.facebookBannerId, AdSize.BANNER_HEIGHT_50)
         bannerContainer.addView(facebookAdView)
         val adListener = object : AdListener {
             override fun onError(ad: Ad, adError: AdError) {

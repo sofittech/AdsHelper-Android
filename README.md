@@ -21,7 +21,7 @@ Here we have an overview of how you can start integrating this SDK into your app
          android:value="@string/admob_app_id" />
          
 ## 4.  Add Admob test-Id in strings class: 
-    <string name="admob_app_id">ca-app-pub-XXXXXXXXXXXXXXXXXXXXXXXXXXX</string>
+    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
 
 ## 5.  A sample builder for your application class:
 
@@ -75,13 +75,12 @@ Here we have an overview of how you can start integrating this SDK into your app
     AdsHelper.loadFacebookInterstitial(false);
     // The parameter “false” in the above function ask for auto load ad next time (in 15 seconds)
     
-## 9.	Loading Admob interstitial Ad:
+## 10.	Loading Admob interstitial Ad:
     AdsHelper.loadAdMobInterstitial(false)
 
-## 10. Then show the interstitial Ad where you want like:
-    AdsHelper.showFacebookInterstitial(MainActivity.this); // For Facebook
-    AdsHelper.showAdMobInterstitial(MainActivity.this); // For AdMob
-
+## 11. Then show the interstitial Ad where you want like:
+    AdsHelper.showInterstitialAd(MainActivity.this, AdNetwork.Facebook); 
+    // The second argument will bb your preferred network type for the interstital ad.
 
 
 
