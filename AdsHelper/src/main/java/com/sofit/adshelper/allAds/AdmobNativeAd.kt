@@ -14,7 +14,7 @@ object AdMobNativeView {
     fun showNativeAd(context: Context, frameLayout: NativeAdCustomView) {
         MobileAds.initialize(context)
         //Initializing the AdLoader   objects
-        val adLoader = AdLoader.Builder(context, AdsHelper.admobNativeId)
+        val adLoader = AdLoader.Builder(context, AdsHelper.adMobNativeId)
             .forUnifiedNativeAd { ad: UnifiedNativeAd ->
                 Log.e("AdMob Native", "Ad is loaded, showing ad...")
 

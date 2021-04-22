@@ -20,13 +20,13 @@ object AdsHelper {
     lateinit var facebookInterstitialAd: com.facebook.ads.InterstitialAd
     lateinit var facebookBannerId: String
     lateinit var adMobBannerId: String
-    lateinit var admobNativeId: String
+    lateinit var adMobNativeId: String
     lateinit var appContext: Context
     var isUserVerified: Boolean = false
 
     data class Builder(
         var context: Context,
-        var admobNativeId: String? = null,
+        var adMobNativeId: String? = null,
         var fb_native_id: String? = null,
         var AdMob_app_id: String? = null
     ) {
@@ -51,8 +51,8 @@ object AdsHelper {
         fun adMobBannerId(AdMobBanner: String) = apply { adMobBannerId = AdMobBanner }
 
         fun adMobNativeId(AdMobNative: String) = apply {
-            this.admobNativeId = AdMobNative
-            admobNativeId = AdMobNative
+            this.adMobNativeId = AdMobNative
+            adMobNativeId = AdMobNative
         }
 
         fun fbInterstitialID(fbInterstitial: String) = apply {
