@@ -68,7 +68,9 @@ object AdsHelper {
 
     @JvmStatic
     fun loadFacebookInterstitial(autoLoadNextTime: Boolean) {
-        if (!facebookInterstitialAd.isAdLoaded || facebookInterstitialAd.isAdInvalidated) {
+        if (this::facebookInterstitialAd.isInitialized &&
+            (!facebookInterstitialAd.isAdLoaded || facebookInterstitialAd.isAdInvalidated)
+        ) {
             if (isUserVerified) {
                 FacebookInterstitial.loadFbAd(autoLoadNextTime)
             } else {
@@ -81,7 +83,7 @@ object AdsHelper {
 
     @JvmStatic
     private fun showFacebookInterstitial(context: Context) {
-        if (facebookInterstitialAd.isAdLoaded && isUserVerified) {
+        if (this::facebookInterstitialAd.isInitialized && facebookInterstitialAd.isAdLoaded && isUserVerified) {
             facebookInterstitialAd.show()
             Log.e("facebookInter", "showingFacebookInterstitialAd")
         }
@@ -89,7 +91,7 @@ object AdsHelper {
 
     @JvmStatic
     fun loadAdMobInterstitial(autoLoadNextTime: Boolean) {
-        if (!adMobInterstitialAd.isLoaded && isUserVerified) {
+        if (this::adMobInterstitialAd.isInitialized && !adMobInterstitialAd.isLoaded && isUserVerified) {
             AdMobInterstitial.loadAdMobAd(autoLoadNextTime)
         } else {
             Log.e("AdMobInterstitial", "AdMob Already loaded")
@@ -99,7 +101,7 @@ object AdsHelper {
     @JvmStatic
     private fun showAdMobInterstitial(context: Context) {
         Log.e("showInterAd", "running")
-        if (adMobInterstitialAd.isLoaded && isUserVerified) {
+        if (this::adMobInterstitialAd.isInitialized && adMobInterstitialAd.isLoaded && isUserVerified) {
             Log.e("showing", "ad")
             adMobInterstitialAd.show()
         }
@@ -109,12 +111,16 @@ object AdsHelper {
     fun showInterstitialAd(context: Context, preferredNetwork: AdNetwork) {
         when (preferredNetwork) {
             AdNetwork.AdMob -> {
-                if (adMobInterstitialAd.isLoaded) showAdMobInterstitial(context)
-                else showFacebookInterstitial(context)
+                if (this::adMobInterstitialAd.isInitialized && adMobInterstitialAd.isLoaded)
+                    showAdMobInterstitial(context)
+                else
+                    showFacebookInterstitial(context)
             }
             AdNetwork.Facebook -> {
-                if (facebookInterstitialAd.isAdLoaded) showFacebookInterstitial(context)
-                else showAdMobInterstitial(context)
+                if (this::facebookInterstitialAd.isInitialized && facebookInterstitialAd.isAdLoaded)
+                    showFacebookInterstitial(context)
+                else
+                    showAdMobInterstitial(context)
             }
         }
     }
