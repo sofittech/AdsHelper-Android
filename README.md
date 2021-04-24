@@ -9,7 +9,7 @@ Currently this SDK supports *Google AdMob* and *Facebook Ads network*. Keeping c
 Here we have an overview of how you can start integrating this SDK into your app:
 
 ## 1.  Add the dependency in gradle (Module)   
-    implementation 'com.github.sofittech:AdsHelper-Android:1.0.3'
+    implementation 'com.github.sofittech:AdsHelper-Android:1.0.5'
 
 
 ## 2.  Get jetpack service by adding in gradle (Project)  repository
