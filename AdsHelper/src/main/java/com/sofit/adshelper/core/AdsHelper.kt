@@ -7,13 +7,10 @@ import android.widget.RelativeLayout
 import com.facebook.ads.AudienceNetworkAds
 import com.sofit.adshelper.allAds.FacebookBanner
 import com.sofit.adshelper.allAds.FacebookInterstitial
-import com.sofit.adshelper.enums.AdNetwork
 
 object AdsHelper {
     lateinit var facebookInterstitialAd: com.facebook.ads.InterstitialAd
     lateinit var facebookBannerId: String
-    lateinit var adMobBannerId: String
-    lateinit var adMobNativeId: String
     lateinit var appContext: Context
     var isUserVerified: Boolean = false
 
@@ -32,7 +29,6 @@ object AdsHelper {
         fun isVerified(isVerified: Boolean) = apply {
             isUserVerified = isVerified
         }
-
 
         fun fbInterstitialID(fbInterstitial: String) = apply {
             facebookInterstitialAd = com.facebook.ads.InterstitialAd(context, fbInterstitial)
@@ -61,18 +57,10 @@ object AdsHelper {
     }
 
     @JvmStatic
-    private fun showFacebookInterstitial(context: Context) {
+    fun showFacebookInterstitial(context: Context) {
         if (this::facebookInterstitialAd.isInitialized && facebookInterstitialAd.isAdLoaded && isUserVerified) {
             facebookInterstitialAd.show()
             Log.e("facebookInter", "showingFacebookInterstitialAd")
-        }
-    }
-
-    @JvmStatic
-    fun showInterstitialAd(context: Context, preferredNetwork: AdNetwork) {
-        if (preferredNetwork == AdNetwork.Facebook) {
-            if (this::facebookInterstitialAd.isInitialized && facebookInterstitialAd.isAdLoaded)
-                showFacebookInterstitial(context)
         }
     }
 

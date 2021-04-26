@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.sofit.adshelper.core.AdsHelper
-import com.sofit.adshelper.enums.AdNetwork
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,11 +16,6 @@ class MainActivity : AppCompatActivity() {
      }
 
     fun showFBAd(view: View) {
-        AdsHelper.showInterstitialAd(this@MainActivity, AdNetwork.Facebook)
+        AdsHelper.showFacebookInterstitial(this@MainActivity)
     }
-
-    fun showAdMobAd(view: View) {
-        AdsHelper.showInterstitialAd(this@MainActivity, AdNetwork.AdMob)
-    }
-
 }

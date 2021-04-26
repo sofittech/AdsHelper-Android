@@ -27,19 +27,17 @@ class BannerAdView(context: Context, attrs: AttributeSet?) :
 
             if (setTopBorders) {
                 topView.visibility = View.VISIBLE
-            }else {
-                topView.visibility= View.GONE
+            } else {
+                topView.visibility = View.GONE
             }
             if (setBottomBorder) {
 
                 bottomView.visibility = View.VISIBLE
-            }else{
-                bottomView.visibility=View.GONE
+            } else {
+                bottomView.visibility = View.GONE
             }
         } finally {
             a.recycle()
         }
     }
-
-
 }

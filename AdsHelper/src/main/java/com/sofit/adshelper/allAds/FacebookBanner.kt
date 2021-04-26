@@ -37,5 +37,4 @@ object FacebookBanner {
             .build()
         facebookAdView.loadAd(loadAdConfig)
     }
-
 }
