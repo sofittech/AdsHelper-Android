@@ -1,6 +1,6 @@
 # Ads helper library
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 🇵🇰
+![stable release version](https://img.shields.io/badge/stable%20release%20version-1.0.6-blue) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 🇵🇰
 
 AdsHelper Android is a light weight library that enables developers to integrate Ads in a fast and secure fashion. 
 Currently this SDK supports *Google AdMob* and *Facebook Ads network*. Keeping coming back from amazing updates and new Ad networks.
