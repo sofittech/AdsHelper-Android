@@ -8,22 +8,25 @@ Currently this SDK supports *Google AdMob* and *Facebook Ads network*. Keeping c
 # Integration:
 Here we have an overview of how you can start integrating this SDK into your app:
 
-## 1.  Add the dependency in gradle (Module)   
+##. Add the dependency in gradle (Module)   
     implementation 'com.github.sofittech:AdsHelper-Android:1.0.6'
+    
+##. If you need *Facebook-Only* Implementation, add the following dependency in gradle:
+    implementation 'com.github.sofittech:AdsHelper-Android:1.0.6-FACEBOOK'
 
 
-## 2.  Get jetpack service by adding in gradle (Project)  repository
+## 3.  Get jetpack service by adding in gradle (Project)  repository
     maven { url 'https://jitpack.io' }
 
-## 3.  Add meta data for admob in manifest with test id if not available 
+##. Add meta data for admob in manifest with test id if not available 
     <meta-data
          android:name="com.google.android.gms.ads.APPLICATION_ID"
          android:value="@string/admob_app_id" />
          
-## 4.  Add Admob test-Id in strings class: 
+##. Add Admob test-Id in strings class: 
     <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
 
-## 5.  A sample builder for your application class:
+##. A sample builder for your application class:
 
    	private fun setAds() {
         if (BuildConfig.DEBUG) {
@@ -46,7 +49,7 @@ Here we have an overview of how you can start integrating this SDK into your app
     And build ads as required (AdMob, Facebook) and (Banner, Interstitial and native ad) in builder class as shown.
 
 
-## 6.  Verify Installer ID method (Checks if the app was installed directly from PlayStore) :
+##. Verify Installer ID method (Checks if the app was installed directly from PlayStore) :
 
     fun verifyInstallerId(context: Context): Boolean {
        val validInstallers: List<String> =
@@ -56,7 +59,7 @@ Here we have an overview of how you can start integrating this SDK into your app
       }
       
 
-## 7.  AdHelper view for banner Ads:
+##. AdHelper view for banner Ads:
     <com.sofit.adshelper.customViews.BannerAdView
          android:id="@+id/bannerAdContainer"
          android:layout_width="match_parent"
@@ -66,19 +69,19 @@ Here we have an overview of how you can start integrating this SDK into your app
          app:setTopBorder="true" />
 
 
-## 8.  Load banner ad(Facebook or AdMob) in on Create of existing activity like:
+##. Load banner ad(Facebook or AdMob) in on Create of existing activity like:
     AdsHelper.showFacebookBanner(MainActivity.this, findViewById(R.id.bannerAdContainer)); //Facebook Banner
     AdsHelper.showAdMobBanner(MainActivity.this, findViewById(R.id.bannerView)); //Admob Banner
 
 
-## 9.	Loading facebook interstitial Ad:
+##. Loading facebook interstitial Ad:
     AdsHelper.loadFacebookInterstitial(false);
     // The parameter “false” in the above function ask for auto load ad next time (in 15 seconds)
     
-## 10.	Loading Admob interstitial Ad:
+##. Loading Admob interstitial Ad:
     AdsHelper.loadAdMobInterstitial(false)
 
-## 11. Then show the interstitial Ad where you want like:
+##. Then show the interstitial Ad where you want like:
     AdsHelper.showInterstitialAd(MainActivity.this, AdNetwork.Facebook); 
     // The second argument will bb your preferred network type for the interstital ad.
 
