@@ -13,23 +13,20 @@ object FacebookBanner {
         bannerContainer.addView(facebookAdView)
         val adListener = object : AdListener {
             override fun onError(ad: Ad, adError: AdError) {
-                Log.e(
-                    "facebookBannerAd",
-                    "onError-Banner failed: " + adError.errorMessage + " in " + activity.localClassName
-                )
+               Log.e("facebook", "Banner  " + adError.errorMessage + " in " + activity.localClassName)
             }
 
             override fun onAdLoaded(ad: Ad) {
                 bannerContainer.visibility=View.VISIBLE
-                Log.e("facebookBannerAd", "onAdLoaded" + " in " + activity.localClassName)
+                Log.e("facebook", "Banner:  Loaded" + " in " + activity.localClassName)
             }
 
             override fun onAdClicked(ad: Ad) {
-                Log.e("facebookBannerAd", "onAdClicked")
+                Log.e("facebook", "Banner:  onAdClicked")
             }
 
             override fun onLoggingImpression(ad: Ad) {
-                Log.e("facebookBannerAd", "onLoggingImpression")
+                Log.e("facebook", "onLoggingImpression")
             }
         }
         val loadAdConfig = facebookAdView.buildLoadAdConfig()
