@@ -1,58 +1,42 @@
 package com.sofit.adshelper.allAds
 
+import android.app.Activity
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.sofit.adshelper.core.AdsHelper
 
 object AdMobInterstitial {
 
-    fun loadAdMobAd(autoLoadNextTime: Boolean) {
-        AdsHelper.adMobInterstitialAd.loadAd(AdRequest.Builder().build())
-        AdsHelper.adMobInterstitialAd.adListener = object : AdListener() {
-            override fun onAdLoaded() {
-                Log.e(
-                    "AdMobInterstitial",
-                    "AdMob Interstitial ad is loaded and ready to be displayed!"
-                )
-            }
+    fun loadAdMobAd(activity: Activity) {
+        val adRequest = AdRequest.Builder().build()
+        InterstitialAd.load(
+            activity,
+            AdsHelper.adMobInterstitialId,
+            adRequest,
+            object : InterstitialAdLoadCallback() {
+                override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                    AdsHelper.adMobInterstitialAd = interstitialAd
 
-            override fun onAdFailedToLoad(errorCode: Int) {
-                // Code to be executed when an ad request fails.
-                Log.e(
-                    "AdMobInterstitial",
-                    "onError-Banner failed, error code: $errorCode"
-                )
-            }
-
-            override fun onAdOpened() {
-                // Code to be executed when the ad is displayed.
-                Log.e("AdMobInterstitial", "opened")
-            }
-
-            override fun onAdClicked() {
-                // Code to be executed when the user clicks on an ad.
-                Log.e("AdMobInterstitial", "clicked")
-            }
-
-            override fun onAdLeftApplication() {
-                // Code to be executed when the user has left the app.
-                Log.e("AdMobInterstitial", "onAdLeftApplication")
-            }
-
-            override fun onAdClosed() {
-                Log.e("AdMobInterstitial", "closed")
-
-                if (autoLoadNextTime) {
-                    Handler(Looper.getMainLooper()).postDelayed(
-                        { AdsHelper.adMobInterstitialAd.loadAd(AdRequest.Builder().build()) },
-                        15000
-                    )
+                    Log.e("admob", "Interstitial: Loaded")
                 }
-            }
-        }
+                override fun onAdFailedToLoad(loadAdError: LoadAdError) {
+                    AdsHelper.adMobInterstitialAd = null
+                    Log.e("admob", "Interstitial: " + loadAdError.message)
+                }
+            })
     }
-
+//  we may use this code in future
+//
+// if (autoLoadNextTime) {
+//        Handler(Looper.getMainLooper()).postDelayed(
+//            { AdsHelper.adMobInterstitialAd.loadAd(AdRequest.Builder().build()) },
+//            15000
+//        )
+//    }
 }
