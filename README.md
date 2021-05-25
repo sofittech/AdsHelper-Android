@@ -1,6 +1,6 @@
 # Ads helper library
 
-![stable release version](https://img.shields.io/badge/stable%20release%20version-1.0.6-blue) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 🇵🇰
+![stable release version](https://img.shields.io/badge/stable%20release%20version-1.0.7-blue) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 🇵🇰
 
 AdsHelper Android is a light weight library that enables developers to integrate Ads in a fast and secure fashion. 
 Currently this SDK supports *Google AdMob* and *Facebook Ads network*. Keeping coming back from amazing updates and new Ad networks.
@@ -9,10 +9,10 @@ Currently this SDK supports *Google AdMob* and *Facebook Ads network*. Keeping c
 Here we have an overview of how you can start integrating this SDK into your app:
 
 ## Add the dependency in gradle (Module)   
-    implementation 'com.github.sofittech:AdsHelper-Android:1.0.6'
+    implementation 'com.github.sofittech:AdsHelper-Android:x.y.z'
     
 ## If you need *Facebook-Only* Implementation, add the following dependency in gradle:
-    implementation 'com.github.sofittech:AdsHelper-Android:1.0.6-FACEBOOK'
+    implementation 'com.github.sofittech:AdsHelper-Android:x.y.z-FACEBOOK'
 
 
 ##  Get jetpack service by adding in gradle (Project)  repository
