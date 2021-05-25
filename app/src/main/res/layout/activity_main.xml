@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.sofit.adshelper.adView.NativeAdCustomView
-        android:id="@+id/my_template"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        app:gnt_template_type="@layout/gnt_medium_template_view" />
+<!--    <com.sofit.adshelper.adView.NativeAdCustomView-->
+<!--        android:id="@+id/my_template"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:visibility="gone"-->
+<!--        app:gnt_template_type="@layout/gnt_medium_template_view" />-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -49,6 +49,5 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:visibility="invisible"
-        app:setBottomBorder="false"
-        app:setTopBorder="true" />
+          />
 </RelativeLayout>

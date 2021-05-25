@@ -1,7 +1,5 @@
 package com.sofit.adshelper.allAds
 
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import com.facebook.ads.Ad
 import com.facebook.ads.AdError
@@ -9,46 +7,41 @@ import com.facebook.ads.InterstitialAdListener
 import com.sofit.adshelper.core.AdsHelper
 
 object FacebookInterstitial {
-    fun loadFbAd(autoLoadNextTime: Boolean) {
-        AdsHelper.facebookInterstitialAd.setAdListener(object : InterstitialAdListener {
+    fun loadFbAd() {
+        val interstitialAdListener: InterstitialAdListener = object : InterstitialAdListener {
             override fun onInterstitialDisplayed(ad: Ad) {
-                Log.e("facebookInterstitial", "Interstitial ad displayed.")
+                // Interstitial ad displayed callback
+                Log.e("facebook", "Banner: " + " Loaded")
             }
 
             override fun onInterstitialDismissed(ad: Ad) {
-                Log.e("facebookInterstitial", "Interstitial ad dismissed.")
-
-                if (autoLoadNextTime) {
-                    Handler(Looper.getMainLooper()).postDelayed(
-                        {
-                            AdsHelper.facebookInterstitialAd.loadAd()                        },
-                        15000
-                    )
-                }
+                // Interstitial dismissed callback
+                Log.e("facebook", "Interstitial: " + " Dismissed")
             }
 
             override fun onError(ad: Ad, adError: AdError) {
-                Log.e(
-                    "facebookInterstitial",
-                    "Interstitial ad failed to load: " + adError.errorMessage + " in "
-                )
+                // Ad error callback
+                Log.e("facebook", "Interstitial: " + adError.errorMessage)
             }
 
             override fun onAdLoaded(ad: Ad) {
-                Log.e(
-                    "facebookInterstitial",
-                    "Interstitial ad is loaded and ready to be displayed!"
-                )
+                // Interstitial ad is loaded and ready to be displayed
+                Log.e("facebook", "Interstitial: " + " Loaded")
+                // Show the ad
             }
 
             override fun onAdClicked(ad: Ad) {
-                Log.e("facebookInterstitial", "Interstitial ad clicked!")
+                // Ad clicked callback
             }
 
             override fun onLoggingImpression(ad: Ad) {
-                Log.e("facebookInterstitial", "Interstitial ad impression logged!")
+                // Ad impression logged callback
             }
-        })
-        AdsHelper.facebookInterstitialAd.loadAd()
+        }
+        AdsHelper.facebookInterstitialAd.loadAd(
+            AdsHelper.facebookInterstitialAd.buildLoadAdConfig()
+                .withAdListener(interstitialAdListener)
+                .build()
+        )
     }
 }

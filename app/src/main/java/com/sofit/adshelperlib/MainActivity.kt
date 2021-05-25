@@ -8,17 +8,17 @@ import com.sofit.adshelper.adView.NativeAdCustomView
 import com.sofit.adshelper.enums.AdNetwork
 
 class MainActivity : AppCompatActivity() {
-    lateinit var nativeAdCustomView: NativeAdCustomView
+   // lateinit var nativeAdCustomView: NativeAdCustomView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        nativeAdCustomView=findViewById(R.id.my_template)
+       // nativeAdCustomView=findViewById(R.id.my_template)
 
-        AdsHelper.showAdMobBanner(this@MainActivity, findViewById(R.id.bannerView))
-        // AdsHelper.showFacebookBanner(this@MainActivity, findViewById(R.id.bannerFacebook))
-        AdsHelper.loadFacebookInterstitial(false)
-        AdsHelper.loadAdMobInterstitial(false)
+         AdsHelper.showAdMobBanner(this@MainActivity, findViewById(R.id.bannerView))
+        //AdsHelper.showFacebookBanner(this@MainActivity, findViewById(R.id.bannerView))
+        AdsHelper.loadFacebookInterstitial()
+        AdsHelper.loadAdMobInterstitial(this@MainActivity)
        // AdsHelper.showAdMobNativeAd(this,nativeAdCustomView)
     }
 
