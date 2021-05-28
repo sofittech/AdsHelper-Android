@@ -19,15 +19,18 @@ class MainActivity : AppCompatActivity() {
         //AdsHelper.showFacebookBanner(this@MainActivity, findViewById(R.id.bannerView))
         AdsHelper.loadFacebookInterstitial()
         AdsHelper.loadAdMobInterstitial(this@MainActivity)
-       // AdsHelper.showAdMobNativeAd(this,nativeAdCustomView)
+        AdsHelper.showAdMobNativeAd(this,findViewById(R.id.native_ad_view))
     }
 
     fun showFBAd(view: View) {
+
         AdsHelper.showInterstitialAd(this@MainActivity, AdNetwork.Facebook)
     }
 
     fun showAdMobAd(view: View) {
         AdsHelper.showInterstitialAd(this@MainActivity, AdNetwork.AdMob)
     }
+
+    fun showNativeAd(view: View) {}
 
 }

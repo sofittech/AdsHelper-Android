@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-  <com.google.android.gms.ads.formats.UnifiedNativeAdView
+  <com.google.android.gms.ads.nativead.NativeAdView
       android:layout_height="350dp"
       android:layout_width="match_parent"
       android:id="@+id/native_ad_view"
@@ -19,7 +19,7 @@
           android:id="@+id/background"
           >
 
-        <com.google.android.gms.ads.formats.MediaView
+        <com.google.android.gms.ads.nativead.MediaView
             android:id="@+id/media_view"
             android:layout_margin="@dimen/gnt_no_size"
             android:layout_width="match_parent"
@@ -55,6 +55,7 @@
             android:id="@+id/icon"
             android:layout_width="0dp"
             android:layout_weight="0"
+            android:visibility="gone"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/gnt_no_margin"
             android:layout_marginStart="@dimen/gnt_default_margin"
@@ -113,7 +114,7 @@
               android:id="@+id/row_two"
               android:orientation="horizontal"
               android:layout_width="match_parent"
-              android:layout_height="@dimen/gnt_no_size"
+              android:layout_height="wrap_content"
               android:layout_weight="0.5"
               app:layout_constraintBottom_toBottomOf="parent"
               app:layout_constraintEnd_toEndOf="parent"
@@ -143,6 +144,7 @@
                 android:background="@android:color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:textSize="@dimen/gnt_text_size_small"
                  android:textColor="@android:color/holo_green_dark"
                 android:numStars="0"
@@ -196,8 +198,9 @@
         <Button
             android:id="@+id/cta"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:background="@android:color/holo_blue_dark"
+            android:visibility="gone"
             android:textColor="@android:color/white"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
@@ -211,5 +214,5 @@
             />
 
       </androidx.constraintlayout.widget.ConstraintLayout>
-  </com.google.android.gms.ads.formats.UnifiedNativeAdView>
+  </com.google.android.gms.ads.nativead.NativeAdView>
 </merge>

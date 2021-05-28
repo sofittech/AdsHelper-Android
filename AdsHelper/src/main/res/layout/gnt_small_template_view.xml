@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-  <com.google.android.gms.ads.formats.UnifiedNativeAdView
+  <com.google.android.gms.ads.nativead.NativeAdView
       android:layout_height="wrap_content"
       android:layout_width="match_parent"
       android:layout_centerInParent="true"
@@ -18,7 +18,7 @@
 
           android:layout_width="match_parent"
           android:layout_height="0dp"
-          app:layout_constraintDimensionRatio="H,4:1"
+          app:layout_constraintDimensionRatio="H,5:1.5"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent"
@@ -39,7 +39,7 @@
             />
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="@dimen/gnt_no_size"
-            android:layout_height="@dimen/gnt_no_size"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/gnt_default_margin"
             android:layout_marginBottom="@dimen/gnt_default_margin"
             android:layout_marginStart="@dimen/gnt_default_margin"
@@ -49,13 +49,12 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/icon"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-          >
+           >
           <LinearLayout
               android:id="@+id/headline"
               android:orientation="horizontal"
               android:layout_width="match_parent"
-              android:layout_height="@dimen/gnt_no_size"
+              android:layout_height="wrap_content"
               android:layout_weight="@dimen/gnt_text_row_weight"
               app:layout_constraintBottom_toTopOf="@+id/row_two"
               app:layout_constraintEnd_toEndOf="parent"
@@ -80,14 +79,13 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                ></TextView>
+                app:layout_constraintTop_toTopOf="parent" />
           </LinearLayout>
           <LinearLayout
               android:id="@+id/row_two"
               android:orientation="horizontal"
               android:layout_width="match_parent"
-              android:layout_height="@dimen/gnt_no_size"
+              android:layout_height="wrap_content"
               android:layout_weight="@dimen/gnt_text_row_weight"
               app:layout_constraintBottom_toTopOf="@+id/cta"
               app:layout_constraintEnd_toEndOf="parent"
@@ -115,8 +113,8 @@
             <RatingBar
                 android:id="@+id/rating_bar"
                 android:background="@android:color/holo_green_dark"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
                 android:textSize="@dimen/gnt_text_size_small"
                 android:textColor="@android:color/white"
                 android:numStars="0"
@@ -153,8 +151,10 @@
           </LinearLayout>
           <Button
               android:id="@+id/cta"
-              android:layout_width="match_parent"
-              android:layout_height="@dimen/gnt_no_size"
+              android:layout_width="0dp"
+              app:layout_constraintWidth_percent="0.87"
+              app:layout_constraintHorizontal_bias="1"
+              android:layout_height="wrap_content"
               android:background="@android:color/holo_blue_bright"
               android:textColor="@android:color/white"
               android:lines="1"
@@ -173,6 +173,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-  </com.google.android.gms.ads.formats.UnifiedNativeAdView>
+  </com.google.android.gms.ads.nativead.NativeAdView>
 
 </merge>
