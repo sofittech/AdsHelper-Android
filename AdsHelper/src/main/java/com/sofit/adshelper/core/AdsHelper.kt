@@ -76,7 +76,7 @@ object AdsHelper {
     }
 
     @JvmStatic
-      fun showFacebookInterstitial(context: Context) {
+    private fun showFacebookInterstitial(context: Context) {
         if (this::facebookInterstitialAd.isInitialized && facebookInterstitialAd.isAdLoaded && isUserVerified) {
             facebookInterstitialAd.show()
             Log.e("facebookInter", "showingFacebookInterstitialAd")
@@ -93,7 +93,7 @@ object AdsHelper {
     }
 
     @JvmStatic
-      fun showAdMobInterstitial(context: Activity) {
+    private fun showAdMobInterstitial(context: Activity) {
         if (adMobInterstitialAd != null) {
             Log.e("admob", "running")
             adMobInterstitialAd?.show(context)
