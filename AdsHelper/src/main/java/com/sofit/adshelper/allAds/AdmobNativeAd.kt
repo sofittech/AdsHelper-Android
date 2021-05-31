@@ -7,7 +7,7 @@ import com.google.android.gms.ads.*
 import com.google.android.gms.ads.nativead.NativeAd
 import com.google.android.gms.ads.nativead.NativeAdOptions
 import com.sofit.adshelper.adView.NativeAdCustomView
-import com.sofit.adshelper.adView.NativeTemplateStyle
+import com.sofit.adshelper.adView.AdmobNativeAdTemplateStyle
 import com.sofit.adshelper.core.AdsHelper
 
 
@@ -21,10 +21,9 @@ object AdMobNativeView {
         val adLoader = AdLoader.Builder(context, AdsHelper.adMobNativeId)
             .forNativeAd { ad: NativeAd ->
                 val styles =
-                    NativeTemplateStyle.Builder().build()
+                    AdmobNativeAdTemplateStyle.Builder().build()
                 frameLayout.setStyles(styles)
-                frameLayout.setNativeAd(ad)
-                // Showing a simple Toast message to user when Native an ad is Loaded and ready to show
+                 // Showing a simple Toast message to user when Native an ad is Loaded and ready to show
                 frameLayout.setNativeAd(ad)
                 frameLayout.visibility = View.VISIBLE
 
