@@ -22,10 +22,9 @@ object AdMobNativeView {
             .forNativeAd { ad: NativeAd ->
                 val styles =
                     AdmobNativeAdTemplateStyle.Builder().build()
-                frameLayout.setStyles(styles)
-                 // Showing a simple Toast message to user when Native an ad is Loaded and ready to show
-                frameLayout.setNativeAd(ad)
                 frameLayout.visibility = View.VISIBLE
+                frameLayout.setStyles(styles)
+                 frameLayout.setNativeAd(ad)
 
             }
             .withAdListener(object : AdListener() {

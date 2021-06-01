@@ -49,7 +49,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/content"
             android:layout_width="@dimen/gnt_no_size"
-            android:layout_height="@dimen/gnt_no_size"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/gnt_default_margin"
             android:layout_marginTop="@dimen/gnt_default_margin"
             android:layout_marginEnd="@dimen/gnt_default_margin"
@@ -63,7 +63,7 @@
           <LinearLayout
               android:id="@+id/headline"
               android:layout_width="match_parent"
-              android:layout_height="@dimen/gnt_no_size"
+              android:layout_height="wrap_content"
               android:layout_weight="@dimen/gnt_text_row_weight"
               android:background="@color/gnt_test_background_color"
               android:orientation="horizontal"
@@ -75,7 +75,7 @@
             <TextView
                 android:id="@+id/primary"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/gnt_no_margin"
                 android:layout_marginTop="@dimen/gnt_no_margin"
                 android:layout_marginEnd="@dimen/gnt_no_margin"
@@ -94,7 +94,7 @@
           <LinearLayout
               android:id="@+id/row_two"
               android:layout_width="match_parent"
-              android:layout_height="@dimen/gnt_no_size"
+              android:layout_height="wrap_content"
               android:layout_weight="@dimen/gnt_text_row_weight"
               android:orientation="horizontal"
               app:layout_constraintBottom_toTopOf="@+id/cta"
@@ -105,7 +105,7 @@
             <TextView
                 android:id="@+id/ad_notification_view"
                 android:layout_width="@dimen/gnt_ad_indicator_width"
-                android:layout_height="@dimen/gnt_ad_indicator_height"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/gnt_no_margin"
                 android:layout_marginLeft="@dimen/gnt_no_margin"
                 android:layout_marginTop="@dimen/gnt_ad_indicator_top_margin"
@@ -125,7 +125,7 @@
                 android:id="@+id/rating_bar"
                 style="?android:attr/ratingBarStyleSmall"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/gnt_no_margin"
                 android:layout_marginTop="@dimen/gnt_no_margin"
                 android:layout_marginEnd="@dimen/gnt_no_margin"
@@ -145,7 +145,7 @@
             <TextView
                 android:id="@+id/secondary"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/gnt_no_margin"
                 android:layout_marginTop="@dimen/gnt_no_margin"
                 android:layout_marginEnd="@dimen/gnt_no_margin"
@@ -165,7 +165,7 @@
           <Button
               android:id="@+id/cta"
               android:layout_width="match_parent"
-              android:layout_height="@dimen/gnt_no_size"
+              android:layout_height="wrap_content"
               android:background="@color/gnt_blue"
               android:lines="1"
               android:text="@string/install"
