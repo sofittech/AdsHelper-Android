@@ -1,7 +1,8 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Ads Helper Lib</string>
     <string name="show_facebook_ad">Show Facebook Ad!</string>
     <string name="show_AdMob_ad">Show AdMob Ad!</string>
+
 
     <string name="AdMob_app_id">ca-app-pub-3922285759477168~4079459621</string>
     <string name="AdMob_test_id_banner" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
