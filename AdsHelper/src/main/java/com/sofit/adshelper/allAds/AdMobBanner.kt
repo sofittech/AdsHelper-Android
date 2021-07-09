@@ -5,6 +5,7 @@ import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
 import android.widget.RelativeLayout
+import com.google.android.ads.mediationtestsuite.MediationTestSuite
 import com.google.android.gms.ads.*
 import com.sofit.adshelper.core.AdsHelper
 
@@ -24,7 +25,7 @@ object AdMobBanner {
 //                    RelativeLayout.LayoutParams.WRAP_CONTENT,
 //                    RelativeLayout.LayoutParams.WRAP_CONTENT
 //                )
-               // adMobContainer.layoutParams = layoutDescription
+                // adMobContainer.layoutParams = layoutDescription
                 Log.e("admob", "Banner:  Loaded")
             }
 
@@ -48,7 +49,7 @@ object AdMobBanner {
             }
         }
         mAdView.loadAd(adRequest)
-
+        MediationTestSuite.launch(activity)
     }
 
     private fun getAdSize(activity: Activity): AdSize? {

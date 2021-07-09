@@ -13,24 +13,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-       // nativeAdCustomView=findViewById(R.id.my_template)
 
-         AdsHelper.showAdMobBanner(this@MainActivity, findViewById(R.id.bannerView))
+         AdsHelper.showBanner(this@MainActivity, findViewById(R.id.bannerView))
         //AdsHelper.showFacebookBanner(this@MainActivity, findViewById(R.id.bannerView))
-        AdsHelper.loadFacebookInterstitial()
-        AdsHelper.loadAdMobInterstitial(this@MainActivity)
-        AdsHelper.showAdMobNativeAd(this, findViewById<NativeAdCustomView>(R.id.my_template))
-    }
-
-    fun showFBAd(view: View) {
-
-        AdsHelper.showInterstitialAd(this@MainActivity, AdNetwork.Facebook)
+        //AdsHelper.loadFacebookInterstitial()
+        AdsHelper.loadInterstitial(this@MainActivity)
+        AdsHelper.showNative(this, findViewById(R.id.my_template))
     }
 
     fun showAdMobAd(view: View) {
-        AdsHelper.showInterstitialAd(this@MainActivity, AdNetwork.AdMob)
+        AdsHelper.showInterstitialAd(this@MainActivity)
     }
-
-    fun showNativeAd(view: View) {}
 
 }

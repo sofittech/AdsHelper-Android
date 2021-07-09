@@ -4,6 +4,7 @@ import android.app.Activity
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import com.google.android.ads.mediationtestsuite.MediationTestSuite
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.LoadAdError
@@ -30,6 +31,8 @@ object AdMobInterstitial {
                     Log.e("admob", "Interstitial: " + loadAdError.message)
                 }
             })
+        MediationTestSuite.launch(activity)
+
     }
 //  we may use this code in future
 //
