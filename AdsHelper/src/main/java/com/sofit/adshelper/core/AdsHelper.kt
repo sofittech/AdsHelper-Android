@@ -10,12 +10,15 @@ import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.sofit.adshelper.adView.NativeAdCustomView
 import com.sofit.adshelper.allAds.*
 import com.sofit.adshelper.enums.AdNetwork
+import com.sofit.adshelper.helper.MyMoPub
 
 object AdsHelper {
     var adMobInterstitialAd: InterstitialAd? = null
     lateinit var facebookInterstitialAd: com.facebook.ads.InterstitialAd
     lateinit var facebookBannerId: String
     lateinit var adMobBannerId: String
+    lateinit var moPubBannerId: String
+    lateinit var moPubInterstitialID: String
     lateinit var adMobNativeId: String
     lateinit var adMobInterstitialId: String
     lateinit var appContext: Context
@@ -32,6 +35,7 @@ object AdsHelper {
             appContext = context
             AudienceNetworkAds.initialize(context)
             MobileAds.initialize(context)
+
         }
 
         fun isVerified(isVerified: Boolean) = apply {
@@ -45,6 +49,15 @@ object AdsHelper {
         }
 
         fun adMobBannerId(AdMobBanner: String) = apply { adMobBannerId = AdMobBanner }
+        fun moPubBannerId(MoPubBanner: String) = apply {
+            moPubBannerId = MoPubBanner
+            MyMoPub().init(context, moPubBannerId)
+        }
+
+        fun moPubInterstitialId(MoPubInterstitial: String) = apply {
+            moPubInterstitialID = MoPubInterstitial
+            MyMoPub().init(context, moPubInterstitialID)
+        }
 
         fun adMobNativeId(AdMobNative: String) = apply {
             this.adMobNativeId = AdMobNative
@@ -95,12 +108,16 @@ object AdsHelper {
     }
 
     @JvmStatic
+    fun loadMoPubInterstitial(activity: Activity) {
+       MoPubInterstitial.loadAd(activity)
+    }
+
+    @JvmStatic
     private fun showAdMobInterstitial(context: Activity) {
         if (adMobInterstitialAd != null) {
             Log.e("admob", "running")
             adMobInterstitialAd?.show(context)
             adMobInterstitialAd = null
-
         }
     }
 
@@ -108,18 +125,23 @@ object AdsHelper {
     fun showInterstitialAd(context: Activity, preferredNetwork: AdNetwork) {
         when (preferredNetwork) {
             AdNetwork.AdMob -> {
-                if (adMobInterstitialAd!= null) {
+                if (adMobInterstitialAd != null) {
                     showAdMobInterstitial(context)
-                } else {
+                } else if (this::facebookInterstitialAd.isInitialized && facebookInterstitialAd.isAdLoaded){
                     showFacebookInterstitial(context)
 
-                }
+                } else if (MoPubInterstitial.moPubInterstitial.isReady){
+                    MoPubInterstitial.showMoPubInterstitial()
+                    }
             }
             AdNetwork.Facebook -> {
                 if (this::facebookInterstitialAd.isInitialized && facebookInterstitialAd.isAdLoaded)
                     showFacebookInterstitial(context)
                 else
                     showAdMobInterstitial(context)
+            }
+            AdNetwork.MoPub -> {
+                MoPubInterstitial.showMoPubInterstitial()
             }
         }
     }
@@ -128,6 +150,13 @@ object AdsHelper {
     fun showAdMobBanner(activity: Activity, rLayout: RelativeLayout) {
         if (isUserVerified) {
             AdMobBanner.showAdMobBanner(activity, rLayout)
+        }
+    }
+
+    @JvmStatic
+    fun showMoPubBanner(activity: Activity, rLayout: RelativeLayout) {
+        if (isUserVerified) {
+            MoPubBanner.showMoPubBanner(activity, rLayout)
         }
     }
 

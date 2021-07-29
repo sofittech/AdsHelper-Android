@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Ads Helper Lib</string>
     <string name="show_facebook_ad">Show Facebook Ad!</string>
     <string name="show_AdMob_ad">Show AdMob Ad!</string>
@@ -11,4 +11,8 @@
     <string name="fb_test_id_banner" translatable="false">IMG_16_9_APP_INSTALL#1348796538799261_1348799512132297</string>
     <string name="fb_test_id_interstitial" translatable="false">IMG_16_9_APP_INSTALL#1348796538799261_1348801922132056</string>
 
+    <string name="mopub_banner_test" translatable="false">b195f8dd8ded45fe847ad89ed1d016da</string>
+    <string name="mopub_interstitial_test" translatable="false">24534e1901884e398f1253216226017e</string>
+    <string name="mopub_native_test" translatable="false">11a17b188668469fb0412708c3d16813</string>
+    <string name="mopub">Show MoPub</string>
 </resources>
