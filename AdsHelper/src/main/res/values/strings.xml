@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="todo">todo</string>
+    <string name="sample_text">Sample Text</string>
+    <string name="sample_text_description">Description of each ad</string>
+    <string name="free_to_play">Free to Play</string>
+</resources>

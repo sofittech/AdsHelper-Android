@@ -3,11 +3,11 @@ package com.sofit.adshelper.core
 import android.app.Activity
 import android.content.Context
 import android.util.Log
+import android.widget.FrameLayout
 import android.widget.RelativeLayout
 import com.facebook.ads.AudienceNetworkAds
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.sofit.adshelper.adView.NativeAdCustomView
 import com.sofit.adshelper.allAds.*
 import com.sofit.adshelper.enums.AdNetwork
 import com.sofit.adshelper.helper.MyMoPub
@@ -19,6 +19,7 @@ object AdsHelper {
     lateinit var adMobBannerId: String
     lateinit var moPubBannerId: String
     lateinit var moPubInterstitialID: String
+    lateinit var moPubNativeID: String
     lateinit var adMobNativeId: String
     lateinit var adMobInterstitialId: String
     lateinit var appContext: Context
@@ -62,6 +63,13 @@ object AdsHelper {
         fun adMobNativeId(AdMobNative: String) = apply {
             this.adMobNativeId = AdMobNative
             adMobNativeId = AdMobNative
+
+        }
+
+        fun moPubNativeAd(MoPubNativeAd: String) = apply {
+            moPubNativeID = MoPubNativeAd
+            MyMoPub().init(context, moPubNativeID)
+
         }
 
         fun fbInterstitialID(fbInterstitial: String) = apply {
@@ -108,8 +116,13 @@ object AdsHelper {
     }
 
     @JvmStatic
+    fun showMoPubNativeAd(activity: Activity, frameLayout: FrameLayout) {
+        MoPubNativeAd.loadAd(activity,frameLayout)
+    }
+
+    @JvmStatic
     fun loadMoPubInterstitial(activity: Activity) {
-       MoPubInterstitial.loadAd(activity)
+        MoPubInterstitial.loadAd(activity)
     }
 
     @JvmStatic
@@ -127,21 +140,30 @@ object AdsHelper {
             AdNetwork.AdMob -> {
                 if (adMobInterstitialAd != null) {
                     showAdMobInterstitial(context)
-                } else if (this::facebookInterstitialAd.isInitialized && facebookInterstitialAd.isAdLoaded){
+                } else if (this::facebookInterstitialAd.isInitialized && facebookInterstitialAd.isAdLoaded) {
                     showFacebookInterstitial(context)
 
-                } else if (MoPubInterstitial.moPubInterstitial.isReady){
+                } else if (MoPubInterstitial.moPubInterstitial.isReady) {
                     MoPubInterstitial.showMoPubInterstitial()
-                    }
+                }
             }
             AdNetwork.Facebook -> {
-                if (this::facebookInterstitialAd.isInitialized && facebookInterstitialAd.isAdLoaded)
+                if (this::facebookInterstitialAd.isInitialized && facebookInterstitialAd.isAdLoaded) {
                     showFacebookInterstitial(context)
-                else
+                } else if (adMobInterstitialAd != null) {
                     showAdMobInterstitial(context)
+                } else if (MoPubInterstitial.moPubInterstitial.isReady) {
+                    MoPubInterstitial.showMoPubInterstitial()
+                }
             }
             AdNetwork.MoPub -> {
-                MoPubInterstitial.showMoPubInterstitial()
+                if (MoPubInterstitial.moPubInterstitial.isReady) {
+                    MoPubInterstitial.showMoPubInterstitial()
+                } else if (this::facebookInterstitialAd.isInitialized && facebookInterstitialAd.isAdLoaded) {
+                    showFacebookInterstitial(context)
+                } else if (adMobInterstitialAd != null) {
+                    showAdMobInterstitial(context)
+                }
             }
         }
     }
@@ -165,11 +187,6 @@ object AdsHelper {
         if (isUserVerified) {
             FacebookBanner.showFacebookBanner(activity, rLayout)
         }
-    }
-
-    @JvmStatic
-    fun showAdMobNativeAd(context: Context, frameLayout: NativeAdCustomView) {
-        AdMobNativeView.showNativeAd(context, frameLayout)
     }
 
 }
