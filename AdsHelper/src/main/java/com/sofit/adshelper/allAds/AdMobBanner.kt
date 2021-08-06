@@ -49,7 +49,9 @@ object AdMobBanner {
             }
         }
         mAdView.loadAd(adRequest)
-        MediationTestSuite.launch(activity)
+        if (AdsHelper.isDebugging){
+            MediationTestSuite.launch(activity)
+        }
     }
 
     private fun getAdSize(activity: Activity): AdSize? {

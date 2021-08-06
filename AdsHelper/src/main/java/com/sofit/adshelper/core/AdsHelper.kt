@@ -19,6 +19,7 @@ object AdsHelper {
     lateinit var adMobInterstitialId: String
     lateinit var appContext: Context
     var isUserVerified: Boolean = false
+    var isDebugging: Boolean = false
 
     data class Builder(
         var context: Context,
@@ -33,6 +34,10 @@ object AdsHelper {
         fun isVerified(isVerified: Boolean) = apply {
             isUserVerified = isVerified
         }
+        fun isDebugMode(isDebug: Boolean) = apply {
+            isDebugging = isDebug
+        }
+
 
         fun adMobAppId(AdMobApp: String) = apply { this.AdMob_app_id = AdMobApp }
 

@@ -31,8 +31,9 @@ object AdMobInterstitial {
                     Log.e("admob", "Interstitial: " + loadAdError.message)
                 }
             })
-        MediationTestSuite.launch(activity)
-
+        if (AdsHelper.isDebugging){
+            MediationTestSuite.launch(activity)
+        }
     }
 //  we may use this code in future
 //

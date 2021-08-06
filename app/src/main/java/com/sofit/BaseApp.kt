@@ -11,10 +11,11 @@ class BaseApp : Application() {
         AdsHelper.Builder(applicationContext)
             .with(applicationContext)
             .isVerified(true)
+            .isDebugMode(false)
             .adMobAppId(applicationContext.getString(R.string.AdMob_app_id))
             .adMobBannerId(applicationContext.getString(R.string.AdMob_test_id_banner))
             .adMobInterstitialId(applicationContext.getString(R.string.AdMob_test_id_interstitial))
             .adMobNativeId(applicationContext.getString(R.string.AdMob_test_id_native))
-             .build()
+            .build()
     }
 }
