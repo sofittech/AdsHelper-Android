@@ -2,6 +2,7 @@ package com.sofit
 
 import android.app.Application
 import com.sofit.adshelper.core.AdsHelper
+import com.sofit.adshelperlib.BuildConfig
 import com.sofit.adshelperlib.R
 
 class BaseApp : Application() {
@@ -11,7 +12,7 @@ class BaseApp : Application() {
         AdsHelper.Builder(applicationContext)
             .with(applicationContext)
             .isVerified(true)
-            .isDebugMode(false)
+            .isDebugMode(BuildConfig.DEBUG)
             .adMobAppId(applicationContext.getString(R.string.AdMob_app_id))
             .adMobBannerId(applicationContext.getString(R.string.AdMob_test_id_banner))
             .adMobInterstitialId(applicationContext.getString(R.string.AdMob_test_id_interstitial))

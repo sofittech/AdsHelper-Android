@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.util.Log
 import android.widget.RelativeLayout
-import com.facebook.ads.AudienceNetworkAds
+import com.google.android.ads.mediationtestsuite.MediationTestSuite
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.sofit.adshelper.adView.NativeAdCustomView
@@ -28,12 +28,13 @@ object AdsHelper {
         fun with(context: Context) = apply {
             this.context = context
             appContext = context
-             MobileAds.initialize(context)
+            MobileAds.initialize(context)
         }
 
         fun isVerified(isVerified: Boolean) = apply {
             isUserVerified = isVerified
         }
+
         fun isDebugMode(isDebug: Boolean) = apply {
             isDebugging = isDebug
         }
@@ -52,6 +53,13 @@ object AdsHelper {
         }
 
         fun build() = AdsHelper
+    }
+
+    @JvmStatic
+    fun showMediationTestSuite(context: Activity) {
+        if (AdsHelper.isDebugging) {
+            MediationTestSuite.launch(context)
+        }
     }
 
     @JvmStatic

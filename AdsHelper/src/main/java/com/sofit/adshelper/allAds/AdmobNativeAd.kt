@@ -3,7 +3,6 @@ package com.sofit.adshelper.allAds
 import android.content.Context
 import android.util.Log
 import android.view.View
-import com.google.android.ads.mediationtestsuite.MediationTestSuite
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.nativead.NativeAd
 import com.google.android.gms.ads.nativead.NativeAdOptions
@@ -43,8 +42,5 @@ object AdMobNativeView {
             )
             .build()
         adLoader.loadAd(AdRequest.Builder().build())
-        if (AdsHelper.isDebugging){
-            MediationTestSuite.launch(context)
-        }
     }
 }

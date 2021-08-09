@@ -1,11 +1,7 @@
 package com.sofit.adshelper.allAds
 
 import android.app.Activity
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
-import com.google.android.ads.mediationtestsuite.MediationTestSuite
-import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
@@ -26,14 +22,12 @@ object AdMobInterstitial {
 
                     Log.e("admob", "Interstitial: Loaded")
                 }
+
                 override fun onAdFailedToLoad(loadAdError: LoadAdError) {
                     AdsHelper.adMobInterstitialAd = null
                     Log.e("admob", "Interstitial: " + loadAdError.message)
                 }
             })
-        if (AdsHelper.isDebugging){
-            MediationTestSuite.launch(activity)
-        }
     }
 //  we may use this code in future
 //
