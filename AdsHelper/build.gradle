@@ -49,5 +49,5 @@ dependencies {
     // mediation
     implementation 'com.google.ads.mediation:facebook:6.5.1.0'
     implementation 'com.google.android.ads:mediation-test-suite:2.0.0'
-    //native ad
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 }

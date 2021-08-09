@@ -21,22 +21,32 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_single" />
-
-
+            app:layout_constraintTop_toBottomOf="@+id/btnLoadAd" />
 
 
         <Button
-            android:id="@+id/btn_single"
+            android:id="@+id/btnLoadAd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="showAdMobAd"
-            android:text="@string/show_AdMob_ad"
+            android:onClick="loadInterstitial"
+            android:text="@string/load_interstitial"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.3" />
+            app:layout_constraintVertical_bias="0.1" />
+
+        <Button
+            android:id="@+id/btnShowAd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="showInterstitial"
+            android:text="@string/show_interstitial"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnLoadAd"
+            app:layout_constraintVertical_bias="0.1" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

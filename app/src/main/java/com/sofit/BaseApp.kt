@@ -4,10 +4,14 @@ import android.app.Application
 import com.sofit.adshelper.core.AdsHelper
 import com.sofit.adshelperlib.BuildConfig
 import com.sofit.adshelperlib.R
+import timber.log.Timber
 
 class BaseApp : Application() {
     override fun onCreate() {
         super.onCreate()
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
 
         AdsHelper.Builder(applicationContext)
             .with(applicationContext)

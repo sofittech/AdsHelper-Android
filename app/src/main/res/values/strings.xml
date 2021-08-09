@@ -11,5 +11,7 @@
 
     <string name="fb_test_id_banner" translatable="false">IMG_16_9_APP_INSTALL#1348796538799261_1348799512132297</string>
     <string name="fb_test_id_interstitial" translatable="false">IMG_16_9_APP_INSTALL#1348796538799261_1348801922132056</string>
+    <string name="load_interstitial">Load Interstitial</string>
+    <string name="show_interstitial">Show Interstitial</string>
 
 </resources>

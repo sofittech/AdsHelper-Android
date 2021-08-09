@@ -2,15 +2,17 @@ package com.sofit.adshelper.core
 
 import android.app.Activity
 import android.content.Context
-import android.util.Log
 import android.widget.RelativeLayout
 import com.google.android.ads.mediationtestsuite.MediationTestSuite
+import com.google.android.gms.ads.AdError
+import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.sofit.adshelper.adView.NativeAdCustomView
 import com.sofit.adshelper.allAds.AdMobBanner
 import com.sofit.adshelper.allAds.AdMobInterstitial
 import com.sofit.adshelper.allAds.AdMobNativeView
+import timber.log.Timber
 
 object AdsHelper {
     var adMobInterstitialAd: InterstitialAd? = null
@@ -39,7 +41,6 @@ object AdsHelper {
             isDebugging = isDebug
         }
 
-
         fun adMobAppId(AdMobApp: String) = apply { this.AdMob_app_id = AdMobApp }
 
         fun adMobInterstitialId(AdMobInterstitial: String) = apply {
@@ -67,17 +68,29 @@ object AdsHelper {
         if (adMobInterstitialAd == null && isUserVerified) {
             AdMobInterstitial.loadAdMobAd(activity)
         } else {
-            Log.e("admob", "AdMob Already loaded")
+            Timber.e("AdMob Interstitial Already loaded")
         }
     }
 
     @JvmStatic
     private fun showAdMobInterstitial(context: Activity) {
         if (adMobInterstitialAd != null) {
-            Log.e("admob", "running")
+            adMobInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
+                override fun onAdDismissedFullScreenContent() {
+                    Timber.e("AdMob Interstitial was dismissed.")
+                }
+
+                override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
+                    Timber.e("AdMob Interstitial failed to show.")
+                }
+
+                override fun onAdShowedFullScreenContent() {
+                    Timber.e("AdMob Interstitial showed fullscreen content.")
+                    adMobInterstitialAd = null;
+                }
+            }
             adMobInterstitialAd?.show(context)
             adMobInterstitialAd = null
-
         }
     }
 
