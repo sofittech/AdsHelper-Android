@@ -10,6 +10,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         AdsHelper.showBanner(this@MainActivity, findViewById(R.id.bannerView))
+        AdsHelper.showMediationTestSuite(this)
+        AdsHelper.showNative(this, findViewById(R.id.my_template))
     }
 
     fun loadInterstitial(view: View) {
