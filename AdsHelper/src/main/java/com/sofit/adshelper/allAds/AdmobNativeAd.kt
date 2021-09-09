@@ -12,16 +12,11 @@ import timber.log.Timber
 
 
 object AdMobNativeView {
-
-    fun showNativeAd(context: Context, frameLayout: NativeAdCustomView) {
+    fun loadNativeAd(context: Context) {
         MobileAds.initialize(context)
         val adLoader = AdLoader.Builder(context, AdsHelper.adMobNativeId)
             .forNativeAd { ad: NativeAd ->
-                val styles =
-                    AdmobNativeAdTemplateStyle.Builder().build()
-                frameLayout.visibility = View.VISIBLE
-                frameLayout.setStyles(styles)
-                frameLayout.setNativeAd(ad)
+                AdsHelper.adMobNativeAd = ad
             }
             .withAdListener(object : AdListener() {
                 override fun onAdLoaded() {
