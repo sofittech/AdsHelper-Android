@@ -2,12 +2,15 @@ package com.sofit.adshelper.core
 
 import android.app.Activity
 import android.content.Context
+import android.view.View
 import android.widget.RelativeLayout
 import com.google.android.ads.mediationtestsuite.MediationTestSuite
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.nativead.NativeAd
+import com.sofit.adshelper.adView.AdmobNativeAdTemplateStyle
 import com.sofit.adshelper.adView.NativeAdCustomView
 import com.sofit.adshelper.allAds.AdMobBanner
 import com.sofit.adshelper.allAds.AdMobInterstitial
@@ -16,6 +19,7 @@ import timber.log.Timber
 
 object AdsHelper {
     var adMobInterstitialAd: InterstitialAd? = null
+    var adMobNativeAd: NativeAd? = null
     lateinit var adMobBannerId: String
     lateinit var adMobNativeId: String
     lateinit var adMobInterstitialId: String
@@ -109,9 +113,17 @@ object AdsHelper {
     }
 
     @JvmStatic
-    fun showNative(context: Context, frameLayout: NativeAdCustomView) {
-        AdMobNativeView.showNativeAd(context, frameLayout)
+    fun loadNativeAd(context: Context) {
+        AdMobNativeView.loadNativeAd(context)
     }
 
+    @JvmStatic
+    fun showNativeAd(frameLayout: NativeAdCustomView) {
+        val styles =
+            AdmobNativeAdTemplateStyle.Builder().build()
+        frameLayout.visibility = View.VISIBLE
+        frameLayout.setStyles(styles)
+        adMobNativeAd?.let { frameLayout.setNativeAd(it) }
+    }
 }
 
