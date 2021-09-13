@@ -20,7 +20,7 @@
 
             <com.google.android.gms.ads.nativead.MediaView
                 android:id="@+id/media_view"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="150dp"
                 android:background="@color/cardview_dark_background"
                 app:layout_constraintBottom_toTopOf="@id/middle"

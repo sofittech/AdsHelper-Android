@@ -12,19 +12,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"
-         android:layout_centerInParent="true"
+        android:layout_centerInParent="true"
         android:background="@drawable/gnt_outline_shape">
 
       <androidx.constraintlayout.widget.ConstraintLayout
 
           android:id="@+id/background"
           android:layout_width="@dimen/gnt_no_size"
-          android:layout_height="wrap_content"
+          android:layout_height="@dimen/gnt_no_size"
           android:layout_marginStart="@dimen/gnt_default_margin"
            android:layout_marginEnd="@dimen/gnt_default_margin"
            android:orientation="horizontal"
           app:layout_constraintBottom_toBottomOf="parent"
-           app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintDimensionRatio="H,4:1"
+          app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent">
 
@@ -33,10 +34,6 @@
             android:layout_width="0dp"
             android:contentDescription="@string/todo"
             android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/gnt_no_margin"
-            android:layout_marginTop="@dimen/gnt_no_margin"
-            android:layout_marginEnd="@dimen/gnt_no_margin"
-            android:layout_marginBottom="@dimen/gnt_no_margin"
             android:layout_weight="0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="H,1:1"
@@ -46,9 +43,12 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/content"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/gnt_no_size"
             android:layout_height="wrap_content"
-
+            android:layout_marginStart="@dimen/gnt_default_margin"
+            android:layout_marginTop="@dimen/gnt_default_margin"
+            android:layout_marginEnd="@dimen/gnt_default_margin"
+            android:layout_marginBottom="@dimen/gnt_default_margin"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -71,6 +71,10 @@
                 android:id="@+id/primary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gnt_no_margin"
+                android:layout_marginTop="@dimen/gnt_no_margin"
+                android:layout_marginEnd="@dimen/gnt_no_margin"
+                android:layout_marginBottom="@dimen/gnt_no_margin"
                 android:background="@color/gnt_white"
                 android:lines="1"
                 android:textColor="@color/gnt_gray"
@@ -97,11 +101,6 @@
                 android:id="@+id/ad_notification_view"
                 android:layout_width="@dimen/gnt_ad_indicator_width"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/gnt_no_margin"
-                android:layout_marginLeft="@dimen/gnt_no_margin"
-                android:layout_marginTop="@dimen/gnt_ad_indicator_top_margin"
-                android:layout_marginEnd="@dimen/gnt_default_margin"
-                android:layout_marginRight="@dimen/gnt_default_margin"
                 android:background="@drawable/gnt_rounded_corners_shape"
                 android:gravity="center"
                 android:text="@string/ad"
@@ -112,26 +111,27 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-<!--            <RatingBar-->
-<!--                android:id="@+id/rating_bar"-->
-<!--                style="?android:attr/ratingBarStyleSmall"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="@dimen/gnt_no_margin"-->
-<!--                android:layout_marginTop="@dimen/gnt_no_margin"-->
-<!--                android:layout_marginEnd="@dimen/gnt_no_margin"-->
-<!--                android:layout_marginBottom="5dp"-->
-<!--                android:background="@color/gnt_white"-->
-<!--                android:lines="1"-->
-<!--                android:numStars="5"-->
-<!--                android:textColor="@color/gnt_gray"-->
-<!--                android:textSize="@dimen/gnt_text_size_small"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toEndOf="@id/ad_notification_view"-->
-<!--                app:layout_constraintTop_toTopOf="parent">-->
+            <RatingBar
+                android:id="@+id/rating_bar"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:layout_marginStart="@dimen/gnt_no_margin"
+                android:layout_marginTop="@dimen/gnt_no_margin"
+                android:layout_marginEnd="@dimen/gnt_no_margin"
+                android:layout_marginBottom="5dp"
+                android:background="@color/gnt_white"
+                android:lines="1"
+                android:numStars="5"
+                android:textColor="@color/gnt_gray"
+                android:textSize="@dimen/gnt_text_size_small"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ad_notification_view"
+                app:layout_constraintTop_toTopOf="parent">
 
-<!--            </RatingBar>-->
+            </RatingBar>
 
             <TextView
                 android:id="@+id/secondary"
@@ -161,7 +161,6 @@
               android:lines="1"
               android:text="@string/install"
               android:textColor="@color/gnt_white"
-              android:layout_marginTop="10dp"
               app:backgroundTint="@color/gnt_blue"
               app:layout_constraintBottom_toBottomOf="parent"
               app:layout_constraintEnd_toEndOf="parent"
