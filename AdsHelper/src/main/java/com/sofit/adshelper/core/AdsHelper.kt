@@ -119,16 +119,13 @@ object AdsHelper {
 
     @JvmStatic
     fun showNativeAd(frameLayout: NativeAdCustomView) {
-        if (AdMobNativeView.isNativeAdLoaded) {
+        adMobNativeAd?.let {
             val styles =
                 AdmobNativeAdTemplateStyle.Builder().build()
             frameLayout.visibility = View.VISIBLE
             frameLayout.setStyles(styles)
-            adMobNativeAd?.let { frameLayout.setNativeAd(it) }
-        }else{
-            Timber.e("AdMob Native not loaded")
+            frameLayout.setNativeAd(it)
         }
-
     }
 }
 

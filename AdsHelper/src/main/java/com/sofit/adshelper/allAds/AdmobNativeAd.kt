@@ -12,13 +12,12 @@ import timber.log.Timber
 
 
 object AdMobNativeView {
-    var isNativeAdLoaded:Boolean=false
-    fun loadNativeAd(context: Context, autoShow:Boolean, frameLayout:NativeAdCustomView) {
+    fun loadNativeAd(context: Context, autoShow: Boolean, frameLayout: NativeAdCustomView) {
         MobileAds.initialize(context)
         val adLoader = AdLoader.Builder(context, AdsHelper.adMobNativeId)
             .forNativeAd { ad: NativeAd ->
                 AdsHelper.adMobNativeAd = ad
-                if (autoShow){
+                if (autoShow) {
                     val styles =
                         AdmobNativeAdTemplateStyle.Builder().build()
                     frameLayout.visibility = View.VISIBLE
@@ -29,8 +28,7 @@ object AdMobNativeView {
             .withAdListener(object : AdListener() {
                 override fun onAdLoaded() {
                     Timber.e("AdMob Native ad loaded")
-                    isNativeAdLoaded=true
-                    if (autoShow){
+                    if (autoShow) {
                         frameLayout.visibility = View.VISIBLE
                     }
                 }
@@ -41,7 +39,6 @@ object AdMobNativeView {
 
                 override fun onAdFailedToLoad(adError: LoadAdError) {
                     Timber.e("AdMob Native ad Failed")
-                    isNativeAdLoaded=false
                 }
             })
             .withNativeAdOptions(
