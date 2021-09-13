@@ -90,7 +90,7 @@ object AdsHelper {
 
                 override fun onAdShowedFullScreenContent() {
                     Timber.e("AdMob Interstitial showed fullscreen content.")
-                    adMobInterstitialAd = null;
+                    adMobInterstitialAd = null
                 }
             }
             adMobInterstitialAd?.show(context)
@@ -113,17 +113,22 @@ object AdsHelper {
     }
 
     @JvmStatic
-    fun loadNativeAd(context: Context) {
-        AdMobNativeView.loadNativeAd(context)
+    fun loadNativeAd(context: Context, autoShow: Boolean, frameLayout: NativeAdCustomView) {
+        AdMobNativeView.loadNativeAd(context, autoShow, frameLayout)
     }
 
     @JvmStatic
     fun showNativeAd(frameLayout: NativeAdCustomView) {
-        val styles =
-            AdmobNativeAdTemplateStyle.Builder().build()
-        frameLayout.visibility = View.VISIBLE
-        frameLayout.setStyles(styles)
-        adMobNativeAd?.let { frameLayout.setNativeAd(it) }
+        if (AdMobNativeView.isNativeAdLoaded) {
+            val styles =
+                AdmobNativeAdTemplateStyle.Builder().build()
+            frameLayout.visibility = View.VISIBLE
+            frameLayout.setStyles(styles)
+            adMobNativeAd?.let { frameLayout.setNativeAd(it) }
+        }else{
+            Timber.e("AdMob Native not loaded")
+        }
+
     }
 }
 
