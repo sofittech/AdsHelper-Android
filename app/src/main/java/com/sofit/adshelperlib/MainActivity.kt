@@ -14,11 +14,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun loadInterstitial(view: View) {
-        AdsHelper.loadNativeAd(
-            context = this,
-            autoShow = true,
-            frameLayout = findViewById(R.id.my_template)
-        )
+        AdsHelper.loadNativeAd(this, true, findViewById(R.id.my_template))
         //AdsHelper.loadInterstitial(this@MainActivity)
     }
 

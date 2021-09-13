@@ -14,10 +14,10 @@
 
         <com.sofit.adshelper.adView.NativeAdCustomView
             android:id="@+id/my_template"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:visibility="invisible"
-            app:gnt_template_type="@layout/gnt_medium_template_view"
+            app:gnt_template_type="@layout/gnt_small_template_view"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"

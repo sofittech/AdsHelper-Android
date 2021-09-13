@@ -21,7 +21,7 @@ class NativeAdCustomView : FrameLayout {
         private set
     private lateinit var primaryView: TextView
     private lateinit var secondaryView: TextView
-    private lateinit var ratingBar: RatingBar
+//    private lateinit var ratingBar: RatingBar
     private lateinit var tertiaryView: TextView
     private lateinit var iconView: ImageView
     private lateinit var mediaView: MediaView
@@ -158,13 +158,13 @@ class NativeAdCustomView : FrameLayout {
         callToActionView.text = cta
         if (starRating != null && starRating > 0) {
             secondaryView.visibility = GONE
-            ratingBar.visibility = VISIBLE
-            ratingBar.max = 5
-            nativeAdView.starRatingView = ratingBar
+//            ratingBar.visibility = VISIBLE
+//            ratingBar.max = 5
+           // nativeAdView.starRatingView = ratingBar
         } else {
             secondaryView.text = secondaryText
             secondaryView.visibility = VISIBLE
-            ratingBar.visibility = GONE
+          //  ratingBar.visibility = GONE
         }
         if (icon != null) {
             iconView.visibility = VISIBLE
@@ -215,8 +215,8 @@ class NativeAdCustomView : FrameLayout {
             mediaView = findViewById<View>(R.id.media_view) as MediaView
 
         }
-        ratingBar = findViewById<View>(R.id.rating_bar) as RatingBar
-        ratingBar.isEnabled = false
+//        ratingBar = findViewById<View>(R.id.rating_bar) as RatingBar
+//        ratingBar.isEnabled = false
         callToActionView = findViewById<View>(R.id.cta) as Button
         iconView = findViewById<View>(R.id.icon) as ImageView
         background = findViewById<View>(R.id.background) as ConstraintLayout
