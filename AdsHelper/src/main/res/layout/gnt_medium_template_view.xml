@@ -21,9 +21,8 @@
             <com.google.android.gms.ads.nativead.MediaView
                 android:id="@+id/media_view"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_margin="@dimen/gnt_no_size"
-                android:layout_marginTop="@dimen/gnt_no_margin"
+                android:layout_height="150dp"
+                android:background="@color/cardview_dark_background"
                 app:layout_constraintBottom_toTopOf="@id/middle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -54,14 +53,8 @@
                         android:contentDescription="@string/todo"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/gnt_default_margin"
-                        android:layout_marginLeft="@dimen/gnt_default_margin"
-                        android:layout_marginTop="@dimen/gnt_no_margin"
-                        android:layout_marginEnd="@dimen/gnt_no_margin"
-                        android:layout_marginRight="@dimen/gnt_no_margin"
-                        android:layout_marginBottom="@dimen/gnt_no_margin"
-                        android:layout_weight="0"
-                        android:scaleType="fitCenter"
+                         android:scaleType="fitCenter"
+                        android:src="@android:drawable/ic_dialog_dialer"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintDimensionRatio="H,1:1"
                         app:layout_constraintEnd_toStartOf="@id/content"
@@ -139,25 +132,25 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
-                            <RatingBar
-                                android:id="@+id/rating_bar"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="@dimen/gnt_no_margin"
-                                android:layout_marginTop="@dimen/gnt_no_margin"
-                                android:layout_marginEnd="@dimen/gnt_no_margin"
-                                android:layout_marginBottom="@dimen/gnt_no_margin"
-                                android:background="@color/gnt_white"
-                                android:lines="1"
-                                android:numStars="0"
-                                android:textColor="@color/gnt_gray"
-                                android:textSize="@dimen/gnt_text_size_small"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toEndOf="@id/ad_notification_view"
-                                app:layout_constraintTop_toTopOf="parent">
+<!--                            <RatingBar-->
+<!--                                android:id="@+id/rating_bar"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:layout_marginStart="@dimen/gnt_no_margin"-->
+<!--                                android:layout_marginTop="@dimen/gnt_no_margin"-->
+<!--                                android:layout_marginEnd="@dimen/gnt_no_margin"-->
+<!--                                android:layout_marginBottom="@dimen/gnt_no_margin"-->
+<!--                                android:background="@color/gnt_white"-->
+<!--                                android:lines="1"-->
+<!--                                android:numStars="0"-->
+<!--                                android:textColor="@color/gnt_gray"-->
+<!--                                android:textSize="@dimen/gnt_text_size_small"-->
+<!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                                app:layout_constraintStart_toEndOf="@id/ad_notification_view"-->
+<!--                                app:layout_constraintTop_toTopOf="parent">-->
 
-                            </RatingBar>
+<!--                            </RatingBar>-->
 
                             <TextView
                                 android:id="@+id/secondary"
@@ -170,6 +163,7 @@
                                 android:background="@color/gnt_white"
                                 android:gravity="top"
                                 android:lines="1"
+                                android:text="@string/secondary_text"
                                 android:textColor="@color/gnt_gray"
                                 android:textSize="@dimen/gnt_text_size_small"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -203,12 +197,13 @@
             <Button
                 android:id="@+id/cta"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:background="@color/gnt_blue"
                 android:gravity="center"
                 android:lines="1"
+                android:text="@string/install"
                 android:textColor="@color/gnt_white"
                 app:backgroundTint="@color/gnt_blue"
                 app:layout_constraintBottom_toBottomOf="parent"
