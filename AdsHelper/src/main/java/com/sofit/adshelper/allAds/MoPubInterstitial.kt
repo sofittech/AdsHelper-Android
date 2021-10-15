@@ -18,7 +18,7 @@ object MoPubInterstitial {
         MyMoPub().init(activity, AdsHelper.moPubInterstitialID)
         Handler(Looper.getMainLooper()).postDelayed({
             loadMoPubInterstitial(activity)
-        }, 1000)
+        }, 100)
     }
 
     private fun loadMoPubInterstitial(activity: Activity) {

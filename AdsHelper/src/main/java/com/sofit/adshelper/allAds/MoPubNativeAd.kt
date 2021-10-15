@@ -21,7 +21,7 @@ object MoPubNativeAd {
     fun loadAd(activity: Activity, nativeView: FrameLayout) {
          Handler(Looper.getMainLooper()).postDelayed({
             loadMoPubBanner(activity, nativeView)
-        }, 1000)
+        }, 100)
     }
 
     private fun loadMoPubBanner(activity: Activity, nativeView: FrameLayout) {

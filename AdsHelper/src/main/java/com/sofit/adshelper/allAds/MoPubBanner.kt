@@ -17,8 +17,7 @@ object MoPubBanner {
     fun showMoPubBanner(activity: Activity, adMobContainer: RelativeLayout) {
         Handler(Looper.getMainLooper()).postDelayed({
             initAd(activity, adMobContainer)
-        }, 1000)
-
+        }, 100)
     }
 
     private fun initAd(activity: Activity, adMobContainer: RelativeLayout) {
