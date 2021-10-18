@@ -3,6 +3,7 @@ package com.sofit.adshelper.helper
 import android.content.Context
 import android.util.Log
 import androidx.annotation.NonNull
+import com.facebook.ads.AudienceNetworkAds
 import com.mopub.common.MoPub
 import com.mopub.common.SdkConfiguration
 import com.mopub.common.SdkInitializationListener
@@ -19,6 +20,7 @@ class MyMoPub {
 
     fun init(context: Context, adunit: String) {
         mContext = context
+        AudienceNetworkAds.initialize(mContext);
         val sdkConfiguration = SdkConfiguration.Builder(adunit)
             .withLogLevel(MoPubLog.LogLevel.DEBUG)
             .withLegitimateInterestAllowed(false)
@@ -30,7 +32,7 @@ class MyMoPub {
         return SdkInitializationListener {
             /* MoPub SDK initialized.
             Check if you should show the consent dialog here, and make your ad requests. */
-            Log.d("MoPub", "MoPub SDK Initilized")
+            Log.d("MoPub", "MoPub SDK Initialized")
             GDPRConsent()
         }
     }

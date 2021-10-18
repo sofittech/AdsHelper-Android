@@ -14,5 +14,9 @@
     <string name="mopub_banner_test" translatable="false">b195f8dd8ded45fe847ad89ed1d016da</string>
     <string name="mopub_interstitial_test" translatable="false">24534e1901884e398f1253216226017e</string>
     <string name="mopub_native_test" translatable="false">11a17b188668469fb0412708c3d16813</string>
+
+<!--    <string name="mopub_banner" translatable="false">3c05d78f001743abace94f672b116a1c</string>-->
+<!--    <string name="mopub_interstitial" translatable="false">4d4800dff981459487ec4ad75e51ec9f</string>-->
+<!--    <string name="mopub_native" translatable="false">2f58070760e143c69df415886302665a</string>-->
     <string name="mopub">Show MoPub</string>
 </resources>

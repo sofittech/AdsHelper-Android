@@ -6,11 +6,11 @@ plugins {
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
-
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
+        multiDexEnabled true
         versionName "1.0"
         resValue "string", "build_config_package", "${applicationId}"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -44,10 +44,13 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     // Facebook Ads
-    //implementation 'com.facebook.android:audience-network-sdk:6.5.1'
+//    implementation 'com.facebook.android:audience-network-sdk:6.8.0'
     // AdMob Ads
-    //implementation 'com.google.android.gms:play-services-ads:20.2.0'
+//    implementation 'com.google.android.gms:play-services-ads:20.4.0'
     // MoPub Ads
+    implementation 'androidx.annotation:annotation:1.2.0'
+    implementation 'com.mopub.mediation:facebookaudiencenetwork:6.3.0.0'
+    implementation 'com.facebook.android:audience-network-sdk:6.8.0'
     implementation('com.mopub:mopub-sdk-banner:5.17.0@aar') {
         transitive = true
     }
