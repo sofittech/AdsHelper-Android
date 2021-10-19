@@ -49,8 +49,8 @@ dependencies {
 //    implementation 'com.google.android.gms:play-services-ads:20.4.0'
     // MoPub Ads
     implementation 'androidx.annotation:annotation:1.2.0'
-    implementation 'com.mopub.mediation:facebookaudiencenetwork:6.3.0.0'
-    implementation 'com.facebook.android:audience-network-sdk:6.8.0'
+    implementation 'com.mopub.mediation:facebookaudiencenetwork:6.7.0.0'
+    implementation 'com.facebook.android:audience-network-sdk:6.7.0'
     implementation('com.mopub:mopub-sdk-banner:5.17.0@aar') {
         transitive = true
     }
