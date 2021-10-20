@@ -55,8 +55,10 @@ object MoPubInterstitial {
     }
 
     fun showMoPubInterstitial() {
-        if (moPubInterstitial.isReady) {
-            moPubInterstitial.show()
+        if (this::moPubInterstitial.isInitialized) {
+            if (moPubInterstitial.isReady) {
+                moPubInterstitial.show()
+            }
         }
     }
 }
