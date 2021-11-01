@@ -8,9 +8,10 @@ import android.view.View
 import android.widget.FrameLayout
 import androidx.core.view.isVisible
 import com.mopub.nativeads.*
-import com.sofit.adshelper.R
 import com.sofit.adshelper.core.AdsHelper
-import com.sofit.adshelper.helper.MyMoPub
+import com.mopub.nativeads.FacebookAdRenderer
+import com.mopub.nativeads.FacebookAdRenderer.FacebookViewBinder
+
 
 object MoPubNativeAd {
     private lateinit var moPubNativeNetworkListener: MoPubNative.MoPubNativeNetworkListener
@@ -19,7 +20,7 @@ object MoPubNativeAd {
     private lateinit var adapterHelper: AdapterHelper
 
     fun loadAd(activity: Activity, nativeView: FrameLayout) {
-         Handler(Looper.getMainLooper()).postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             loadMoPubBanner(activity, nativeView)
         }, 100)
     }
@@ -58,19 +59,33 @@ object MoPubNativeAd {
 
         moPubNative = MoPubNative(activity, AdsHelper.moPubNativeID, moPubNativeNetworkListener)
 
-        val viewBinder = ViewBinder.Builder(R.layout.mopub_native_ad_view)
-            .titleId(R.id.mopub_native_ad_title)
-            .textId(R.id.mopub_native_ad_text)
-            .mainImageId(R.id.mopub_native_ad_main_imageview)
-            .iconImageId(R.id.mopub_native_ad_icon)
-            .callToActionId(R.id.mopub_native_ad_cta)
-            .privacyInformationIconImageId(R.id.mopub_native_ad_privacy)
+        val viewBinder = ViewBinder.Builder(com.sofit.adshelper.R.layout.mopub_native_ad_view)
+            .titleId(com.sofit.adshelper.R.id.mopub_native_ad_title)
+            .textId(com.sofit.adshelper.R.id.mopub_native_ad_text)
+            .mainImageId(com.sofit.adshelper.R.id.mopub_native_ad_main_imageview)
+            .iconImageId(com.sofit.adshelper.R.id.mopub_native_ad_icon)
+            .callToActionId(com.sofit.adshelper.R.id.mopub_native_ad_cta)
+            .privacyInformationIconImageId(com.sofit.adshelper.R.id.mopub_native_ad_privacy)
             .build()
 
+        val facebookAdRenderer = FacebookAdRenderer(
+            FacebookViewBinder.Builder(com.sofit.adshelper.R.layout.facebooknative)
+                .titleId(com.sofit.adshelper.R.id.fb_native_ad_title)
+                .textId(com.sofit.adshelper.R.id.fb_native_ad_body)
+                .mediaViewId(com.sofit.adshelper.R.id.fb_native_ad_media)
+                .adIconViewId(com.sofit.adshelper.R.id.fb_nativeIcon)
+                .adChoicesRelativeLayoutId(com.sofit.adshelper.R.id.fb_ad_choices_container)
+                .advertiserNameId(com.sofit.adshelper.R.id.fb_native_ad_title) // Bind either the titleId or advertiserNameId depending on the FB SDK version
+                // End of binding to new layouts
+                .callToActionId(com.sofit.adshelper.R.id.fb_native_ad_call_to_action)
+                .build())
+        moPubNative.registerAdRenderer(facebookAdRenderer)
         val adRenderer = MoPubStaticNativeAdRenderer(viewBinder)
         moPubNative.registerAdRenderer(adRenderer)
         moPubNative.makeRequest()
         Log.e("mopubAd", "Native ad is loading")
+
+
 
     }
 
