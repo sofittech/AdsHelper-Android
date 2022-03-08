@@ -15,8 +15,6 @@ class BaseApp : Application() {
             .adMobBannerId(applicationContext.getString(R.string.AdMob_test_id_banner))
             .adMobInterstitialId(applicationContext.getString(R.string.AdMob_test_id_interstitial))
             .adMobNativeId(applicationContext.getString(R.string.AdMob_test_id_native))
-            .fbBannerId(applicationContext.getString(R.string.fb_test_id_banner))
-            .fbInterstitialID(applicationContext.getString(R.string.fb_test_id_interstitial))
             .build()
     }
 }

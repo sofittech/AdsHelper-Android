@@ -33,7 +33,7 @@ object AdMobNativeView {
                 }
 
                 override fun onAdFailedToLoad(adError: LoadAdError) {
-                    Log.e("admob", " Native ad Failed")
+                    Log.e("admob", " Native ad Failed $adError")
                 }
             })
             .withNativeAdOptions(

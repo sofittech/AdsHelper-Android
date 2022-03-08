@@ -4,12 +4,10 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
-
+    compileSdkVersion 31
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
         resValue "string", "build_config_package", "${applicationId}"
@@ -43,11 +41,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    // facebook ads library
-    implementation 'com.facebook.android:audience-network-sdk:6.5.0'
     // AdMob ads library
-    implementation 'com.google.android.gms:play-services-ads:20.1.0'
-    //native ad
-
+    implementation 'com.google.android.gms:play-services-ads:20.6.0'
 
 }
