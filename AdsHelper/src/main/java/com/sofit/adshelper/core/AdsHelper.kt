@@ -5,17 +5,28 @@ import android.content.Context
 import android.util.Log
 import android.widget.RelativeLayout
 import com.google.android.gms.ads.MobileAds
-import com.google.android.gms.ads.RequestConfiguration
+import com.google.android.gms.ads.appopen.AppOpenAd
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.sofit.adshelper.adView.NativeAdCustomView
-import com.sofit.adshelper.allAds.*
-import java.util.*
+import com.sofit.adshelper.allAds.AdMobBanner
+import com.sofit.adshelper.allAds.AdMobInterstitial
+import com.sofit.adshelper.allAds.AdMobNativeView
+import com.sofit.adshelper.allAds.AppOpenAdManager
 
 object AdsHelper {
     var adMobInterstitialAd: InterstitialAd? = null
     lateinit var adMobBannerId: String
     lateinit var adMobNativeId: String
     lateinit var adMobInterstitialId: String
+    lateinit var adMobOpenAdId: String
+    lateinit var appOpenAdManager: AppOpenAdManager
+    var appOpenAd: AppOpenAd? = null
+    var isLoadingAd = false
+    var isShowingAd = false
+
+    /** Keep track of the time an app open ad is loaded to ensure you don't show an expired ad. */
+//    var loadTime: Long = 0
+
     lateinit var appContext: Context
     var isUserVerified: Boolean = false
 
@@ -31,6 +42,7 @@ object AdsHelper {
 //            val configuration = RequestConfiguration.Builder().setTestDeviceIds(testDeviceIds).build()
 //            MobileAds.setRequestConfiguration(configuration)
             MobileAds.initialize(context)
+            appOpenAdManager = AppOpenAdManager()
         }
 
         fun isVerified(isVerified: Boolean) = apply {
@@ -41,6 +53,10 @@ object AdsHelper {
 
         fun adMobInterstitialId(AdMobInterstitial: String) = apply {
             adMobInterstitialId = AdMobInterstitial
+        }
+
+        fun adMobOpenAdId(AdMobOpenAds: String) = apply {
+            adMobOpenAdId = AdMobOpenAds
         }
 
         fun adMobBannerId(AdMobBanner: String) = apply { adMobBannerId = AdMobBanner }
@@ -62,6 +78,26 @@ object AdsHelper {
         }
     }
 
+    @JvmStatic
+    fun loadAdMobOpenAd(activity: Activity) {
+        if (isUserVerified && appOpenAd == null) {
+            appOpenAdManager.loadOpenAd(activity)
+        } else {
+            Log.e("openAd", "Open ad Already loaded")
+        }
+
+    }
+    @JvmStatic
+    fun showAdMobOpenAd(
+        activity: Activity
+    ) {
+        isShowingAd = true
+        if (appOpenAd != null) {
+            appOpenAd?.show(activity)
+            appOpenAd = null
+        }
+
+    }
     @JvmStatic
     private fun showAdMobInterstitial(context: Activity) {
         if (adMobInterstitialAd != null) {
@@ -85,6 +121,7 @@ object AdsHelper {
             AdMobBanner.showAdMobBanner(activity, rLayout)
         }
     }
+
 
 
     @JvmStatic

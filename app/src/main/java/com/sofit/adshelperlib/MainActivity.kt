@@ -14,12 +14,14 @@ class MainActivity : AppCompatActivity() {
         nativeAdCustomView = findViewById(R.id.my_template)
         AdsHelper.showAdMobBanner(this@MainActivity, findViewById(R.id.bannerView))
         AdsHelper.loadAdMobInterstitial(this@MainActivity)
-        AdsHelper.showAdMobNativeAd(this, nativeAdCustomView)
+        AdsHelper.loadAdMobOpenAd(this)
+        AdsHelper.showAdMobOpenAd(this)
+//        AdsHelper.showAdMobNativeAd(this, nativeAdCustomView)
     }
 
 
     fun showAdMobAd(view: View) {
-        AdsHelper.showInterstitialAd(this@MainActivity)
+        AdsHelper.showAdMobOpenAd(this@MainActivity)
     }
 
     fun showNativeAd(view: View) {

@@ -14,7 +14,7 @@ class BaseApp : Application() {
             .adMobAppId(applicationContext.getString(R.string.AdMob_app_id))
             .adMobBannerId(applicationContext.getString(R.string.AdMob_test_id_banner))
             .adMobInterstitialId(applicationContext.getString(R.string.AdMob_test_id_interstitial))
-            .adMobNativeId(applicationContext.getString(R.string.AdMob_test_id_native))
+            .adMobOpenAdId("ca-app-pub-3940256099942544/3419835294")
             .build()
     }
 }

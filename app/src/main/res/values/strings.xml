@@ -5,5 +5,6 @@
     <string name="AdMob_test_id_banner" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
     <string name="AdMob_test_id_interstitial" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
     <string name="AdMob_test_id_native" translatable="false">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="open_ad">Open Ad</string>
 
 </resources>
