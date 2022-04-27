@@ -5,11 +5,12 @@ import android.content.Context
 import android.util.Log
 import android.widget.RelativeLayout
 import com.facebook.ads.AudienceNetworkAds
+import com.facebook.ads.InterstitialAd
 import com.sofit.adshelper.allAds.FacebookBanner
 import com.sofit.adshelper.allAds.FacebookInterstitial
 
 object AdsHelper {
-    lateinit var facebookInterstitialAd: com.facebook.ads.InterstitialAd
+    lateinit var facebookInterstitialAd: InterstitialAd
     lateinit var facebookBannerId: String
     lateinit var appContext: Context
     var isUserVerified: Boolean = false

@@ -1,11 +1,8 @@
 package com.sofit.adshelper.allAds
 
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import com.facebook.ads.Ad
 import com.facebook.ads.AdError
-import com.facebook.ads.InterstitialAd
 import com.facebook.ads.InterstitialAdListener
 import com.sofit.adshelper.core.AdsHelper
 
@@ -43,11 +40,6 @@ object FacebookInterstitial {
             }
         }
 
-        // For auto play video ads, it's recommended to load the ad
-        // at least 30 seconds before it is shown
-
-        // For auto play video ads, it's recommended to load the ad
-        // at least 30 seconds before it is shown
         AdsHelper.facebookInterstitialAd.loadAd(
             AdsHelper.facebookInterstitialAd.buildLoadAdConfig()
                 .withAdListener(interstitialAdListener)
