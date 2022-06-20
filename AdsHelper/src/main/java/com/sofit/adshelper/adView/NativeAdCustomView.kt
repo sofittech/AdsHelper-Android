@@ -147,10 +147,10 @@ class NativeAdCustomView : FrameLayout {
         secondaryView.visibility = VISIBLE
         if (adHasOnlyStore(nativeAd)) {
             nativeAdView.storeView = secondaryView
-            secondaryText = store
+            secondaryText = store.toString()
         } else if (!TextUtils.isEmpty(advertiser)) {
             nativeAdView.advertiserView = secondaryView
-            secondaryText = advertiser
+            secondaryText = advertiser.toString()
         } else {
             secondaryText = ""
         }

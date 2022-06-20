@@ -12,8 +12,9 @@ object AdMobBanner {
 
     fun showAdMobBanner(activity: Activity, adMobContainer: RelativeLayout) {
         val mAdView = AdView(activity)
-        mAdView.adSize = getAdSize(activity)
         mAdView.adUnitId = AdsHelper.adMobBannerId
+        val adsSize = getAdSize(activity, mAdView)
+        adsSize.let { mAdView.setAdSize(it) }
         adMobContainer.addView(mAdView)
         val adRequest = AdRequest.Builder().build()
         mAdView.adListener = object : AdListener() {
@@ -40,13 +41,31 @@ object AdMobBanner {
         mAdView.loadAd(adRequest)
     }
 
-    private fun getAdSize(activity: Activity): AdSize? {
+//    private fun getAdSize(activity: Activity): AdSize? {
+//        val display = activity.windowManager.defaultDisplay
+//        val outMetrics = DisplayMetrics()
+//        display.getMetrics(outMetrics)
+//        val widthPixels = outMetrics.widthPixels.toFloat()
+//        val density = outMetrics.density
+//        val adWidth = (widthPixels / density).toInt()
+//        return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(activity, adWidth)
+//    }
+
+    fun getAdSize(activity: Activity, view: View): AdSize {
+        // Step 2 - Determine the screen width (less decorations) to use for the ad width.
         val display = activity.windowManager.defaultDisplay
         val outMetrics = DisplayMetrics()
         display.getMetrics(outMetrics)
-        val widthPixels = outMetrics.widthPixels.toFloat()
+
         val density = outMetrics.density
-        val adWidth = (widthPixels / density).toInt()
+
+        var adWidthPixels = view.width.toFloat()
+        if (adWidthPixels == 0f) {
+            adWidthPixels = outMetrics.widthPixels.toFloat()
+        }
+
+        val adWidth = (adWidthPixels / density).toInt()
         return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(activity, adWidth)
     }
+
 }

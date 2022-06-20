@@ -77,19 +77,23 @@ object AdsHelper {
     }
 
     @JvmStatic
-    private fun showAdMobInterstitial(context: Activity) {
+    private fun showAdMobInterstitial(context: Activity, goForward: () -> Unit) {
         if (adMobInterstitialAd != null) {
             adMobInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
                 override fun onAdDismissedFullScreenContent() {
-                    Timber.e("AdMob Interstitial was dismissed.")
+                    goForward()
+                    Timber.tag("ads").e("AdMob Interstitial was dismissed.")
                 }
 
-                override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
-                    Timber.e("AdMob Interstitial failed to show.")
+                override fun onAdFailedToShowFullScreenContent(p0: AdError) {
+                    goForward()
+                    Timber.tag("ads").e("AdMob Interstitial failed to show.")
+                    super.onAdFailedToShowFullScreenContent(p0)
                 }
+
 
                 override fun onAdShowedFullScreenContent() {
-                    Timber.e("AdMob Interstitial showed fullscreen content.")
+                    Timber.tag("ads").e("AdMob Interstitial showed fullscreen content.")
                     adMobInterstitialAd = null
                 }
             }
@@ -99,9 +103,13 @@ object AdsHelper {
     }
 
     @JvmStatic
-    fun showInterstitialAd(context: Activity) {
+    fun showInterstitialAd(context: Activity, goForward: () -> Unit) {
         if (adMobInterstitialAd != null) {
-            showAdMobInterstitial(context)
+            showAdMobInterstitial(context) {
+                goForward()
+                Timber.tag("ads").e("Done.")
+
+            }
         }
     }
 
