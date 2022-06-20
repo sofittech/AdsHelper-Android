@@ -77,7 +77,7 @@ object AdsHelper {
     }
 
     @JvmStatic
-    private fun showInterstitialAd(context: Activity, goForward: () -> Unit) {
+    fun showInterstitialAd(context: Activity, goForward: () -> Unit) {
         if (adMobInterstitialAd != null) {
             adMobInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
                 override fun onAdDismissedFullScreenContent() {
