@@ -77,7 +77,7 @@ object AdsHelper {
     }
 
     @JvmStatic
-    private fun showAdMobInterstitial(context: Activity, goForward: () -> Unit) {
+    private fun showInterstitialAd(context: Activity, goForward: () -> Unit) {
         if (adMobInterstitialAd != null) {
             adMobInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
                 override fun onAdDismissedFullScreenContent() {
@@ -99,19 +99,20 @@ object AdsHelper {
             }
             adMobInterstitialAd?.show(context)
             adMobInterstitialAd = null
+        } else {
+            goForward()
         }
     }
 
-    @JvmStatic
-    fun showInterstitialAd(context: Activity, goForward: () -> Unit) {
-        if (adMobInterstitialAd != null) {
-            showAdMobInterstitial(context) {
-                goForward()
-                Timber.tag("ads").e("Done.")
-
-            }
-        }
-    }
+//    @JvmStatic
+//    fun showInterstitialAd(context: Activity, goForward: () -> Unit) {
+//        if (adMobInterstitialAd != null) {
+//            this.showInterstitialAd(context) {
+//                goForward()
+//                Timber.tag("ads").e("Done.")
+//            }
+//        }
+//    }
 
     @JvmStatic
     fun showBanner(activity: Activity, rLayout: RelativeLayout) {
@@ -124,6 +125,7 @@ object AdsHelper {
     fun loadNativeAd(context: Context, autoShow: Boolean, frameLayout: NativeAdCustomView) {
         AdMobNativeView.loadNativeAd(context, autoShow, frameLayout)
     }
+
 
     @JvmStatic
     fun showNativeAd(frameLayout: NativeAdCustomView) {
