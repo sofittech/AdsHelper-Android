@@ -101,6 +101,7 @@ object AdsHelper {
             adMobInterstitialAd = null
         } else {
             goForward()
+            Timber.tag("else").e("call")
         }
     }
 
