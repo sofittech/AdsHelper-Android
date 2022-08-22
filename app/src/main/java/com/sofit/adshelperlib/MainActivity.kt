@@ -12,10 +12,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         AdsHelper.showFacebookBanner(this@MainActivity, findViewById(R.id.bannerView))
-        AdsHelper.loadFacebookInterstitial(false)
-     }
+        AdsHelper.loadFacebookInterstitial()
+        AdsHelper.loadFacebookInterstitial()
+    }
 
     fun showFBAd(view: View) {
-        AdsHelper.showFacebookInterstitial(this@MainActivity)
+        AdsHelper.showFacebookInterstitial()
     }
 }

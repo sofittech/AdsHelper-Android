@@ -5,7 +5,7 @@ plugins {
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         minSdkVersion 21
@@ -44,7 +44,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     // facebook ads library
-    implementation 'com.facebook.android:audience-network-sdk:6.7.0'
-    implementation 'androidx.annotation:annotation:1.2.0'
+    implementation 'com.facebook.android:audience-network-sdk:6.11.0'
+    implementation 'androidx.annotation:annotation:1.4.0'
 
 }

@@ -43,12 +43,12 @@ object AdsHelper {
     }
 
     @JvmStatic
-    fun loadFacebookInterstitial(autoLoadNextTime: Boolean) {
+    fun loadFacebookInterstitial() {
         if (this::facebookInterstitialAd.isInitialized &&
             (!facebookInterstitialAd.isAdLoaded || facebookInterstitialAd.isAdInvalidated)
         ) {
             if (isUserVerified) {
-                FacebookInterstitial.loadFbAd(autoLoadNextTime)
+                FacebookInterstitial.loadFbAd()
             } else {
                 Log.e("facebookInterstitial", "Ad already loaded")
             }
@@ -58,10 +58,15 @@ object AdsHelper {
     }
 
     @JvmStatic
-    fun showFacebookInterstitial(context: Context) {
+    fun showFacebookInterstitial() {
+        if (facebookInterstitialAd == null || !facebookInterstitialAd.isAdLoaded) {
+            return
+        }
+        if (facebookInterstitialAd.isAdInvalidated) {
+            return;
+        }
         if (this::facebookInterstitialAd.isInitialized && facebookInterstitialAd.isAdLoaded && isUserVerified) {
             facebookInterstitialAd.show()
-            Log.e("facebookInter", "showingFacebookInterstitialAd")
         }
     }
 

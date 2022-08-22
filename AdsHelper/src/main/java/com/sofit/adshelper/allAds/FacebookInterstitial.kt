@@ -7,7 +7,7 @@ import com.facebook.ads.InterstitialAdListener
 import com.sofit.adshelper.core.AdsHelper
 
 object FacebookInterstitial {
-    fun loadFbAd(autoLoadNextTime: Boolean) {
+    fun loadFbAd() {
 
         val interstitialAdListener: InterstitialAdListener = object : InterstitialAdListener {
             override fun onInterstitialDisplayed(ad: Ad) {
