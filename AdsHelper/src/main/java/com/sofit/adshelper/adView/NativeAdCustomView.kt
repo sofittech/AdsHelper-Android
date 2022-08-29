@@ -136,7 +136,7 @@ class NativeAdCustomView : FrameLayout {
         val cta = nativeAd.callToAction
         val starRating = nativeAd.starRating
         val icon = nativeAd.icon
-        val secondaryText: String
+        var secondaryText: String? = null
         nativeAdView.callToActionView = callToActionView
         nativeAdView.headlineView = primaryView
         if (templateTypeName == MEDIUM_TEMPLATE) {
@@ -147,10 +147,14 @@ class NativeAdCustomView : FrameLayout {
         secondaryView.visibility = VISIBLE
         if (adHasOnlyStore(nativeAd)) {
             nativeAdView.storeView = secondaryView
-            secondaryText = store
+            if (store != null) {
+                secondaryText = store
+            }
         } else if (!TextUtils.isEmpty(advertiser)) {
             nativeAdView.advertiserView = secondaryView
-            secondaryText = advertiser
+            if (advertiser != null) {
+                secondaryText = advertiser
+            }
         } else {
             secondaryText = ""
         }
