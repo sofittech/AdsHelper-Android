@@ -15,7 +15,6 @@ import com.sofit.adshelper.adView.NativeAdCustomView
 import com.sofit.adshelper.allAds.AdMobBanner
 import com.sofit.adshelper.allAds.AdMobInterstitial
 import com.sofit.adshelper.allAds.AdMobNativeView
-import timber.log.Timber
 
 object AdsHelper {
     var adMobInterstitialAd: InterstitialAd? = null
@@ -47,9 +46,9 @@ object AdsHelper {
 
         fun adMobAppId(AdMobApp: String) = apply { this.AdMob_app_id = AdMobApp }
 
-        fun adMobInterstitialId(AdMobInterstitial: String) = apply {
-            adMobInterstitialId = AdMobInterstitial
-        }
+//        fun adMobInterstitialId(AdMobInterstitial: String) = apply {
+//            adMobInterstitialId = AdMobInterstitial
+//        }
 
         fun adMobBannerId(AdMobBanner: String) = apply { adMobBannerId = AdMobBanner }
 
@@ -68,11 +67,10 @@ object AdsHelper {
     }
 
     @JvmStatic
-    fun loadInterstitial(activity: Activity) {
+    fun loadInterstitial(activity: Activity, ids: String) {
+        adMobInterstitialId = ids
         if (adMobInterstitialAd == null && isUserVerified) {
             AdMobInterstitial.loadAdMobAd(activity)
-        } else {
-            Timber.e("AdMob Interstitial Already loaded")
         }
     }
 
@@ -82,18 +80,15 @@ object AdsHelper {
             adMobInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
                 override fun onAdDismissedFullScreenContent() {
                     goForward()
-                    Timber.tag("ads").e("AdMob Interstitial was dismissed.")
                 }
 
                 override fun onAdFailedToShowFullScreenContent(p0: AdError) {
                     goForward()
-                    Timber.tag("ads").e("AdMob Interstitial failed to show.")
                     super.onAdFailedToShowFullScreenContent(p0)
                 }
 
 
                 override fun onAdShowedFullScreenContent() {
-                    Timber.tag("ads").e("AdMob Interstitial showed fullscreen content.")
                     adMobInterstitialAd = null
                 }
             }
@@ -101,19 +96,9 @@ object AdsHelper {
             adMobInterstitialAd = null
         } else {
             goForward()
-            Timber.tag("else").e("call")
         }
     }
 
-//    @JvmStatic
-//    fun showInterstitialAd(context: Activity, goForward: () -> Unit) {
-//        if (adMobInterstitialAd != null) {
-//            this.showInterstitialAd(context) {
-//                goForward()
-//                Timber.tag("ads").e("Done.")
-//            }
-//        }
-//    }
 
     @JvmStatic
     fun showBanner(activity: Activity, rLayout: RelativeLayout) {
