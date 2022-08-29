@@ -23,7 +23,7 @@ object AdsHelper {
 
     data class Builder(
         var context: Context,
-         var fb_native_id: String? = null,
+        var fb_native_id: String? = null,
         var AdMob_app_id: String? = null
     ) {
         fun with(context: Context) = apply {
@@ -46,8 +46,8 @@ object AdsHelper {
         fun adMobBannerId(AdMobBanner: String) = apply { adMobBannerId = AdMobBanner }
 
         fun adMobNativeId(AdMobNative: String) = apply {
-             adMobNativeId = AdMobNative
-         }
+            adMobNativeId = AdMobNative
+        }
 
         fun fbInterstitialID(fbInterstitial: String) = apply {
             facebookInterstitialAd = com.facebook.ads.InterstitialAd(context, fbInterstitial)
@@ -61,21 +61,6 @@ object AdsHelper {
     }
 
     @JvmStatic
-    fun loadFacebookInterstitial() {
-        if (this::facebookInterstitialAd.isInitialized &&
-            (!facebookInterstitialAd.isAdLoaded || facebookInterstitialAd.isAdInvalidated)
-        ) {
-            if (isUserVerified) {
-                FacebookInterstitial.loadFbAd()
-            } else {
-                Log.e("facebookInterstitial", "Ad already loaded")
-            }
-        } else {
-            Log.e("facebookInterstitial", "Ad already loaded")
-        }
-    }
-
-    @JvmStatic
     private fun showFacebookInterstitial() {
         if (this::facebookInterstitialAd.isInitialized && facebookInterstitialAd.isAdLoaded && isUserVerified) {
             facebookInterstitialAd.show()
@@ -84,12 +69,30 @@ object AdsHelper {
     }
 
     @JvmStatic
-    fun loadAdMobInterstitial(activity: Activity) {
-        if (adMobInterstitialAd == null && isUserVerified) {
-            AdMobInterstitial.loadAdMobAd(activity)
-        } else {
-            Log.e("admob", "AdMob Already loaded")
+    fun loadNativeInterstitialAds(activity: Activity, adNetwork: AdNetwork) {
+        when (adNetwork) {
+            AdNetwork.AdMob -> {
+                if (adMobInterstitialAd == null && isUserVerified) {
+                    AdMobInterstitial.loadAdMobAd(activity)
+                } else {
+                    Log.e("admob", "AdMob Already loaded")
+                }
+            }
+            AdNetwork.Facebook -> {
+                if (this::facebookInterstitialAd.isInitialized &&
+                    (!facebookInterstitialAd.isAdLoaded || facebookInterstitialAd.isAdInvalidated)
+                ) {
+                    if (isUserVerified) {
+                        FacebookInterstitial.loadFbAd()
+                    } else {
+                        Log.e("facebookInterstitial", "Ad already loaded")
+                    }
+                } else {
+                    Log.e("facebookInterstitial", "Ad already loaded")
+                }
+            }
         }
+
     }
 
     @JvmStatic
@@ -106,7 +109,7 @@ object AdsHelper {
     fun showInterstitialAd(context: Activity, preferredNetwork: AdNetwork) {
         when (preferredNetwork) {
             AdNetwork.AdMob -> {
-                if (adMobInterstitialAd!= null) {
+                if (adMobInterstitialAd != null) {
                     showAdMobInterstitial(context)
                 } else {
                     showFacebookInterstitial()
@@ -123,18 +126,22 @@ object AdsHelper {
     }
 
     @JvmStatic
-    fun showAdMobBanner(activity: Activity, rLayout: RelativeLayout) {
-        if (isUserVerified) {
-            AdMobBanner.showAdMobBanner(activity, rLayout)
+    fun showNativeBannerAds(activity: Activity, rLayout: RelativeLayout, adNetwork: AdNetwork) {
+        when (adNetwork) {
+            AdNetwork.AdMob -> {
+                if (isUserVerified) {
+                    AdMobBanner.showAdMobBanner(activity, rLayout)
+                }
+            }
+            AdNetwork.Facebook -> {
+                if (isUserVerified) {
+                    FacebookBanner.showFacebookBanner(activity, rLayout)
+                }
+            }
         }
+
     }
 
-    @JvmStatic
-    fun showFacebookBanner(activity: Activity, rLayout: RelativeLayout) {
-        if (isUserVerified) {
-            FacebookBanner.showFacebookBanner(activity, rLayout)
-        }
-    }
 
     @JvmStatic
     fun showAdMobNativeAd(context: Context, frameLayout: NativeAdCustomView) {
