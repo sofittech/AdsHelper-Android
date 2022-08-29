@@ -119,8 +119,7 @@ object AdsHelper {
             AdNetwork.Facebook -> {
                 if (this::facebookInterstitialAd.isInitialized && facebookInterstitialAd.isAdLoaded)
                     showFacebookInterstitial()
-                else
-                    showAdMobInterstitial(context)
+
             }
         }
     }
