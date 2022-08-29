@@ -10,11 +10,11 @@ import timber.log.Timber
 
 object AdMobInterstitial {
 
-    fun loadAdMobAd(activity: Activity) {
+    fun loadAdMobAd(activity: Activity, ids: String) {
         val adRequest = AdRequest.Builder().build()
         InterstitialAd.load(
             activity,
-            AdsHelper.adMobInterstitialId,
+            ids,
             adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdLoaded(interstitialAd: InterstitialAd) {

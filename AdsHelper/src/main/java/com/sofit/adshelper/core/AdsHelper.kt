@@ -68,9 +68,8 @@ object AdsHelper {
 
     @JvmStatic
     fun loadInterstitial(activity: Activity, ids: String) {
-        adMobInterstitialId = ids
         if (adMobInterstitialAd == null && isUserVerified) {
-            AdMobInterstitial.loadAdMobAd(activity)
+            AdMobInterstitial.loadAdMobAd(activity, ids)
         }
     }
 
