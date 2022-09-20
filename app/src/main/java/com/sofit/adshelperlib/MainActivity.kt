@@ -2,7 +2,6 @@ package com.sofit.adshelperlib
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sofit.adshelper.adView.NativeAdCustomView
 import com.sofit.adshelper.core.AdsHelper
@@ -27,14 +26,11 @@ class MainActivity : AppCompatActivity() {
 
     fun showFBAd(view: View) {
         AdsHelper.showInterstitialAd(this@MainActivity, AdNetwork.Facebook) {
-            Toast.makeText(this, "dismiss", Toast.LENGTH_SHORT).show()
         }
     }
 
     fun showAdMobAd(view: View) {
         AdsHelper.showInterstitialAd(this@MainActivity, AdNetwork.AppLovin) {
-            Toast.makeText(this, "from applovin", Toast.LENGTH_SHORT).show()
-
         }
     }
 

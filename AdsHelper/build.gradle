@@ -44,7 +44,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     // facebook ads library
-    implementation 'com.facebook.android:audience-network-sdk:6.11.0'
+    api 'com.facebook.android:audience-network-sdk:6.11.0'
     // AdMob ads library
     implementation 'com.google.android.gms:play-services-ads:21.2.0'
     //applovin ad
