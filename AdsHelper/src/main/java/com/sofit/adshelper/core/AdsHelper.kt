@@ -10,8 +10,8 @@ import com.sofit.adshelper.allAds.FacebookBanner
 import com.sofit.adshelper.allAds.FacebookInterstitial
 
 object AdsHelper {
-    lateinit var facebookInterstitialAd: InterstitialAd
-    lateinit var facebookBannerId: String
+    var facebookInterstitialAd: InterstitialAd? = null
+    var facebookBannerId: String? = null
     lateinit var appContext: Context
     var isUserVerified: Boolean = false
 
@@ -32,7 +32,7 @@ object AdsHelper {
         }
 
         fun fbInterstitialID(fbInterstitial: String) = apply {
-            facebookInterstitialAd = com.facebook.ads.InterstitialAd(context, fbInterstitial)
+            facebookInterstitialAd = InterstitialAd(context, fbInterstitial)
         }
 
         fun fbBannerId(fbBanner: String) = apply { facebookBannerId = fbBanner }
@@ -44,9 +44,7 @@ object AdsHelper {
 
     @JvmStatic
     fun loadFacebookInterstitial() {
-        if (this::facebookInterstitialAd.isInitialized &&
-            (!facebookInterstitialAd.isAdLoaded || facebookInterstitialAd.isAdInvalidated)
-        ) {
+        if (facebookInterstitialAd?.isAdLoaded == false || facebookInterstitialAd?.isAdInvalidated == true) {
             if (isUserVerified) {
                 FacebookInterstitial.loadFbAd()
             } else {
@@ -59,14 +57,11 @@ object AdsHelper {
 
     @JvmStatic
     fun showFacebookInterstitial() {
-        if (facebookInterstitialAd == null || !facebookInterstitialAd.isAdLoaded) {
+        if (facebookInterstitialAd == null || facebookInterstitialAd?.isAdLoaded == false || facebookInterstitialAd?.isAdInvalidated == false) {
             return
         }
-        if (facebookInterstitialAd.isAdInvalidated) {
-            return;
-        }
-        if (this::facebookInterstitialAd.isInitialized && facebookInterstitialAd.isAdLoaded && isUserVerified) {
-            facebookInterstitialAd.show()
+        if (facebookInterstitialAd?.isAdLoaded == true && isUserVerified) {
+            facebookInterstitialAd?.show()
         }
     }
 
