@@ -46,8 +46,10 @@ dependencies {
     // facebook ads library
     implementation 'com.facebook.android:audience-network-sdk:6.11.0'
     // AdMob ads library
-    implementation 'com.google.android.gms:play-services-ads:21.1.0'
-    //native ad
+    implementation 'com.google.android.gms:play-services-ads:21.2.0'
+    //applovin ad
+    implementation 'com.applovin:applovin-sdk:11.4.4'
+
 
 
 }
