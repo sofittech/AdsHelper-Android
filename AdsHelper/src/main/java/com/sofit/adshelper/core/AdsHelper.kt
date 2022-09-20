@@ -1,13 +1,21 @@
 package com.sofit.adshelper.core
 
 import android.app.Activity
+import android.app.Application
 import android.content.Context
+import android.os.Build
+import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.RelativeLayout
+import androidx.core.content.ContextCompat
 import com.applovin.mediation.MaxAd
 import com.applovin.mediation.MaxAdListener
+import com.applovin.mediation.MaxAdViewAdListener
 import com.applovin.mediation.MaxError
+import com.applovin.mediation.ads.MaxAdView
 import com.applovin.mediation.ads.MaxInterstitialAd
 import com.applovin.sdk.AppLovinSdk
 import com.facebook.ads.Ad
@@ -19,6 +27,7 @@ import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.gms.ads.nativead.NativeAd
 import com.google.android.gms.ads.nativead.NativeAdOptions
+import com.sofit.adshelper.R
 import com.sofit.adshelper.adView.AdmobNativeAdTemplateStyle
 import com.sofit.adshelper.adView.NativeAdCustomView
 import com.sofit.adshelper.enums.AdNetwork
@@ -66,6 +75,65 @@ object AdsHelper {
             Log.e("applovin", "onAdDisplayFailed: DisplayFailed")
             onClickClose?.invoke()
 
+        }
+
+    }
+    var adView: MaxAdView? = null
+    private val listeners = object : MaxAdViewAdListener {
+        override fun onAdLoaded(ad: MaxAd?) {
+            TODO("Not yet implemented")
+        }
+
+        override fun onAdDisplayed(ad: MaxAd?) {
+            TODO("Not yet implemented")
+        }
+
+        override fun onAdHidden(ad: MaxAd?) {
+            TODO("Not yet implemented")
+        }
+
+        override fun onAdClicked(ad: MaxAd?) {
+            TODO("Not yet implemented")
+        }
+
+        override fun onAdLoadFailed(adUnitId: String?, error: MaxError?) {
+            TODO("Not yet implemented")
+        }
+
+        override fun onAdDisplayFailed(ad: MaxAd?, error: MaxError?) {
+            TODO("Not yet implemented")
+        }
+
+        override fun onAdExpanded(ad: MaxAd?) {
+            TODO("Not yet implemented")
+        }
+
+        override fun onAdCollapsed(ad: MaxAd?) {
+            TODO("Not yet implemented")
+        }
+
+    }
+    private val callbacks = object : Application.ActivityLifecycleCallbacks {
+        override fun onActivityCreated(p0: Activity, p1: Bundle?) {
+        }
+
+        override fun onActivityStarted(p0: Activity) {
+        }
+
+        override fun onActivityResumed(p0: Activity) {
+        }
+
+        override fun onActivityPaused(p0: Activity) {
+        }
+
+        override fun onActivityStopped(p0: Activity) {
+        }
+
+        override fun onActivitySaveInstanceState(p0: Activity, p1: Bundle) {
+        }
+
+        override fun onActivityDestroyed(p0: Activity) {
+//            dismissView()
         }
 
     }
@@ -250,12 +318,17 @@ object AdsHelper {
         when (adNetwork) {
             AdNetwork.AdMob -> {
                 if (isUserVerified) {
-                    showAdMobBanner(activity, rLayout)
+                    showAdMobBannerAds(activity, rLayout)
                 }
             }
             AdNetwork.Facebook -> {
                 if (isUserVerified) {
-                    showFacebookBanner(activity, rLayout)
+                    showFacebookBannerAds(activity, rLayout)
+                }
+            }
+            AdNetwork.AppLovin -> {
+                if (isUserVerified) {
+                    showApplovinBannerAds(activity, rLayout)
                 }
             }
         }
@@ -296,33 +369,37 @@ object AdsHelper {
         interstitialAdListener = object : InterstitialAdListener {
             override fun onInterstitialDisplayed(ad: Ad) {
                 // Interstitial ad displayed callback
-                Log.e("facebook", "interstitialAdListener: " + " Loaded")
+                Log.e("facebook", "onInterstitialDisplayed: " + " Display")
             }
 
             override fun onInterstitialDismissed(ad: Ad) {
                 // Interstitial dismissed callback
                 onClickClose?.invoke()
-//                Log.e("facebook", "Interstitial: " + " Dismissed")
+                Log.e("facebook", "onInterstitialDismissed: " + " Dismissed")
             }
 
             override fun onError(ad: Ad, adError: AdError) {
                 // Ad error callback
-                Log.e("facebook", "Interstitial: error " + adError.errorMessage)
+                Log.e("facebook", "Interstitial: onError " + adError.errorMessage)
                 onClickClose?.invoke()
             }
 
             override fun onAdLoaded(ad: Ad) {
                 // Interstitial ad is loaded and ready to be displayed
-                Log.e("facebook", "Interstitial: " + " Loaded")
+                Log.e("facebook", "Interstitial: onAdLoaded" + " Loaded")
                 // Show the ad
             }
 
             override fun onAdClicked(ad: Ad) {
                 // Ad clicked callback
+                Log.e("facebook", "Interstitial: onAdClicked" + " Loaded")
+
             }
 
             override fun onLoggingImpression(ad: Ad) {
                 // Ad impression logged callback
+                Log.e("facebook", "Interstitial: onLoggingImpression" + " Loaded")
+
             }
         }
         facebookInterstitialAd?.loadAd(
@@ -331,7 +408,7 @@ object AdsHelper {
         )
     }
 
-    private fun showAdMobBanner(activity: Activity, adMobContainer: RelativeLayout) {
+    private fun showAdMobBannerAds(activity: Activity, adMobContainer: RelativeLayout) {
         val mAdView = AdView(activity)
         val adsSize = getAdSize(activity, mAdView)
         adsSize.let { mAdView.setAdSize(it) }
@@ -369,7 +446,7 @@ object AdsHelper {
 
     }
 
-    private fun showFacebookBanner(activity: Activity, bannerContainer: RelativeLayout) {
+    private fun showFacebookBannerAds(activity: Activity, bannerContainer: RelativeLayout) {
         val facebookAdView = com.facebook.ads.AdView(
             activity,
             facebookBannerId,
@@ -436,6 +513,31 @@ object AdsHelper {
         adLoader?.loadAd(AdRequest.Builder().build())
     }
 
+    private fun showApplovinBannerAds(activity: Activity, maxBannerAdLayout: ViewGroup) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            activity.registerActivityLifecycleCallbacks(callbacks)
+        } else {
+            activity.application.registerActivityLifecycleCallbacks(callbacks)
+        }
+        appLovinBannerId?.let {
+            adView = MaxAdView(it, activity)
+            adView?.setListener(listeners)
+            // Stretch to the width of the screen for banners to be fully functional
+            val width = ViewGroup.LayoutParams.MATCH_PARENT
+
+            // Banner height on phones and tablets is 50 and 90, respectively
+            val heightPx = activity.resources.getDimensionPixelSize(R.dimen._56sdp)
+
+            adView?.layoutParams = FrameLayout.LayoutParams(width, heightPx)
+
+            // Set background or background color for banners to be fully functional
+            adView?.setBackgroundColor(ContextCompat.getColor(activity, R.color.white))
+            activity.findViewById<ViewGroup>(maxBannerAdLayout.id).addView(adView)
+            adView?.loadAd()
+        }
+
+    }
 
 }
 

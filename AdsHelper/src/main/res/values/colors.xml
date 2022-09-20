@@ -5,4 +5,5 @@
     <color name="gnt_gray">#919191</color>
     <color name="gnt_ad_green">#4CAF50</color>
     <color name="gnt_blue">#03A9F4</color>
+    <color name="white">#ffffff</color>
 </resources>
