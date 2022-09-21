@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         AdsHelper.showNativeBannerAds(
             this@MainActivity,
-            findViewById(R.id.bannerView),
+            findViewById(R.id.bannerMain),
             AdNetwork.Facebook
         )
         AdsHelper.loadNativeInterstitialAds(this@MainActivity, AdNetwork.AppLovin)

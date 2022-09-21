@@ -411,7 +411,7 @@ object AdsHelper {
     private fun showAdMobBannerAds(activity: Activity, adMobContainer: RelativeLayout) {
         val mAdView = AdView(activity)
         val adsSize = getAdSize(activity, mAdView)
-        adsSize.let { mAdView.setAdSize(it) }
+        adsSize?.let { mAdView.setAdSize(it) }
         adMobBannerId?.let {
             mAdView.adUnitId = it
         }
