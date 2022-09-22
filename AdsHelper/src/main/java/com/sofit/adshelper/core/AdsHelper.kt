@@ -287,12 +287,17 @@ object AdsHelper {
                     }
                 }
                 AdNetwork.Facebook -> {
-                    if (facebookInterstitialAd?.isAdLoaded == true) {
-                        facebookInterstitialAd?.show()
-                        onClickClose = goForward
+                    if (facebookInterstitialAd == null) {
+                        if (facebookInterstitialAd?.isAdLoaded == true) {
+                            facebookInterstitialAd?.show()
+                            onClickClose = goForward
+                        } else {
+                            goForward.invoke()
+                        }
                     } else {
                         goForward.invoke()
                     }
+
 
                 }
                 AdNetwork.AppLovin -> {
