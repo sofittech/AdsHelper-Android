@@ -35,6 +35,7 @@ import com.sofit.adshelper.utils.AdsUtils.getAdSize
 
 object AdsHelper {
     var onClickClose: (() -> Unit)? = null
+    var onClickCloseApplovin: (() -> Unit)? = null
 
     //facebook listener
     private var interstitialAdListener: InterstitialAdListener? = null
@@ -56,7 +57,7 @@ object AdsHelper {
 
         override fun onAdHidden(ad: MaxAd?) {
             Log.e("applovin", "onAdHidden: Hidden")
-            onClickClose?.invoke()
+            onClickCloseApplovin?.invoke()
 
         }
 
@@ -67,13 +68,13 @@ object AdsHelper {
 
         override fun onAdLoadFailed(adUnitId: String?, error: MaxError?) {
             Log.e("applovin", "onAdLoadFailed: LoadFailed")
-            onClickClose?.invoke()
+            onClickCloseApplovin?.invoke()
 
         }
 
         override fun onAdDisplayFailed(ad: MaxAd?, error: MaxError?) {
             Log.e("applovin", "onAdDisplayFailed: DisplayFailed")
-            onClickClose?.invoke()
+            onClickCloseApplovin?.invoke()
 
         }
 
@@ -304,7 +305,7 @@ object AdsHelper {
                     if (interstitialAd != null) {
                         if (interstitialAd?.isReady == true) {
                             interstitialAd?.showAd()
-                            onClickClose = goForward
+                            onClickCloseApplovin = goForward
                         } else {
                             goForward.invoke()
                         }
