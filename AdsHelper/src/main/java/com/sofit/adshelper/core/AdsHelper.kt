@@ -288,10 +288,14 @@ object AdsHelper {
                     }
                 }
                 AdNetwork.Facebook -> {
-                    facebookInterstitialAd?.isAdLoaded?.let {
-                        facebookInterstitialAd?.show()
-                        onClickClose = goForward
+                    facebookInterstitialAd?.let {
+                        it.isAdLoaded.let {
+                            facebookInterstitialAd?.show()
+                            onClickClose = goForward
+                        } ?: goForward.invoke()
                     } ?: goForward.invoke()
+
+
                 }
                 AdNetwork.AppLovin -> {
                     if (interstitialAd != null) {
