@@ -25,6 +25,7 @@ object AdMobInterstitial {
 
                     Log.e("admob", "Interstitial: Loaded")
                 }
+
                 override fun onAdFailedToLoad(loadAdError: LoadAdError) {
                     AdsHelper.adMobInterstitialAd = null
                     Log.e("admob", "Interstitial: " + loadAdError.message)

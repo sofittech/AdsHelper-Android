@@ -24,7 +24,7 @@ object AdMobBanner {
 //                    RelativeLayout.LayoutParams.WRAP_CONTENT,
 //                    RelativeLayout.LayoutParams.WRAP_CONTENT
 //                )
-               // adMobContainer.layoutParams = layoutDescription
+                // adMobContainer.layoutParams = layoutDescription
                 Log.e("admob", "Banner:  Loaded")
             }
 

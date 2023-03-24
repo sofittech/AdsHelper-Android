@@ -6,24 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<!--    <com.sofit.adshelper.adView.NativeAdCustomView-->
-<!--        android:id="@+id/my_template"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:visibility="gone"-->
-<!--        app:gnt_template_type="@layout/gnt_medium_template_view" />-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cll_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-         android:layout_above="@+id/bannerView">
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bannerMain"
+        android:layout_alignParentTop="true">
 
+        <com.sofit.adshelper.adView.NativeAdCustomView
+            android:id="@+id/my_template"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:gnt_template_type="@layout/gnt_medium_template_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_single" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="showNativeAd"
+            android:text="Show AdMob Native"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.1"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:onClick="showFBAd"
-             android:text="@string/show_facebook_ad"
+            android:text="@string/show_facebook_ad"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -31,23 +49,24 @@
             app:layout_constraintVertical_bias="0.2" />
 
         <Button
+            android:id="@+id/btn_single"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="showAdMobAd"
             android:text="@string/show_AdMob_ad"
-             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.4" />
+            app:layout_constraintVertical_bias="0.3" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.sofit.adshelper.customViews.BannerAdView
-        android:id="@+id/bannerView"
+        android:id="@+id/bannerMain"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:visibility="invisible"
-          />
+        android:layout_height="70dp"
+
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>

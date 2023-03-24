@@ -14,13 +14,11 @@ class BannerAdView(context: Context, attrs: AttributeSet?) :
     var setBottomBorder: Boolean = false
     var topView: View
     var bottomView: View
-    var bannerMain: RelativeLayout? = null
 
     init {
         val view: View = LayoutInflater.from(context).inflate(R.layout.content_view, this)
         topView = view.findViewById(R.id.topBorder)
         bottomView = view.findViewById(R.id.bottomBorder)
-        bannerMain = view.findViewById(R.id.bannerMain)
         val a: TypedArray = context.theme.obtainStyledAttributes(attrs, R.styleable.MyAdView, 0, 0)
 
         try {
@@ -38,7 +36,6 @@ class BannerAdView(context: Context, attrs: AttributeSet?) :
             } else {
                 bottomView.visibility = View.GONE
             }
-
         } finally {
             a.recycle()
         }
